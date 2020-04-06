@@ -1,1 +1,36 @@
 //
+
+@import "./pages/login.scss";
+
+body {
+    background-color: #71c7ec;
+    color: #363636;
+}
+
+strong {
+    font-weight: 600;
+    color: #363636;
+}
+
+div.message-box {
+    width: 85%;
+    text-align: center;
+    margin: 0 auto !important;
+
+    div.col {
+        padding: 5px 0;
+        border-radius: 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        &.error {
+            background-color: #ef5350;
+            color: #ffffff;
+        }
+
+        &.success {
+            background-color: #388e3c;
+            color: #ffffff;
+        }
+    }
+}

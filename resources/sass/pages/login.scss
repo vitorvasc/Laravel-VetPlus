@@ -1,0 +1,27 @@
+
+div.login {
+    margin-top: 80px;
+
+    div.box-title {
+        background-color:#01579b;
+        margin-bottom: 0;
+        
+        h3 {
+            margin-top: 0px;
+            padding-top: 20px;
+            padding-left: 20px;
+            color: white;
+        }
+    }
+
+    div.col {
+        background-color: #ffffff;
+
+        form {
+            margin-top: 1.75rem;
+            div.row {
+                text-align: right;
+            }
+        }
+    }
+}

@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', ['uses' => 'Login\LoginController@index']);
+
+Route::get('/login', ['as' => 'site.login', 'uses' => 'Login\LoginController@index']);
+Route::post('/login/validate', ['as' => 'site.login.validate', 'uses' => 'Login\LoginController@login']);
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/logout', ['as' => 'site.logout', 'uses' => 'Login\LoginController@logout']);
+    
+    Route::get('/inicio', ['as' => 'site.logout', 'uses' => 'Home\HomeController@index']);
 });
