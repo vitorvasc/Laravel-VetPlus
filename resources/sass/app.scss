@@ -1,10 +1,36 @@
 //
 
 @import "./pages/login.scss";
+@import "./pages/especies.scss";
 
 body {
     background-color: #71c7ec;
     color: #363636;
+    height: 100%;
+
+    nav {
+        background-color: #01579b;
+        color: #ffffff;
+
+        @media (min-width: 992px) {
+            a.brand-logo {
+                margin-left: 15px;
+            }
+        }
+    }
+
+    div.container {
+        &.main {
+            padding-top: 20px;
+        }
+
+        div.row {
+            &.content {
+                padding: 20px 0;
+                background-color: #ffffff;
+            }
+        }
+    }
 }
 
 strong {
@@ -19,7 +45,7 @@ div.message-box {
 
     div.col {
         padding: 5px 0;
-        border-radius: 0;
+        border-radius: 5px;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
 
@@ -34,3 +60,32 @@ div.message-box {
         }
     }
 }
+
+/* Inputs */
+/* label color */
+.input-field label {
+    color: #01579b;
+  }
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: #01579b;
+  }
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #01579b;
+    box-shadow: 0 1px 0 0 #01579b;
+  }
+  /* valid color */
+  .input-field input[type=text].valid {
+    border-bottom: 1px solid #01579b;
+    box-shadow: 0 1px 0 0 #01579b;
+  }
+  /* invalid color */
+  .input-field input[type=text].invalid {
+    border-bottom: 1px solid #01579b;
+    box-shadow: 0 1px 0 0 #01579b;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #01579b;
+  }

@@ -1,5 +1,12 @@
 
 div.login {
+    div.message-box {
+        div.col {
+            border-radius: 0 !important;
+            border-bottom-left-radius: 5px !important;
+            border-bottom-right-radius: 5px !important;
+        }
+    }
     margin-top: 80px;
 
     div.box-title {

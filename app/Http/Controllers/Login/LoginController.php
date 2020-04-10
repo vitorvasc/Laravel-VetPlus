@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Login;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +12,11 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('login.index');
+        if (Auth::user()) {
+            return redirect()->route('site.home');
+        } else {
+            return view('login.index');
+        }
     }
 
     public function login(Request $req)
@@ -44,5 +48,6 @@ class LoginController extends Controller
         if (Auth::user()) {
             Auth::logout();
         }
+        return redirect()->route('site.login');
     }
 }

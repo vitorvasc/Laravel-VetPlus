@@ -1,11 +1,9 @@
 @extends('_layout.site')
 
-@section('titulo', 'Login')
+@section('titulo', 'Início')
 
 @section('conteudo')
 
-<div class="row">
-    site.home
-</div>
+home
 
 @endsection

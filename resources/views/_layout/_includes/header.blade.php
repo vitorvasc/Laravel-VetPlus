@@ -14,33 +14,31 @@
 
 <body>
     <header>
-        @if (Auth::user())            
+        @if (Auth::user())
         <nav>
             <div class="nav-wrapper">
                 <a href="{{route('site.login')}}" class="brand-logo">{{@env('APP_NAME')}} </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li @if(Route::current()->getName() == 'site.login') class="active" @endif>
-                        <a href="{{route('site.login')}}">Início</a>
+                    <li @if(Route::current()->getName() == 'site.home') class="active" @endif>
+                        <a href="{{route('site.home')}}">Início</a>
                     </li>
-                    <li @if(Route::current()->getName() == 'site.login') class="active" @endif>
-                        <a href="{{route('site.login')}}">Notícias</a>
+
+                    <li @if(Route::current()->getName() == 'site.especies') class="active" @endif>
+                        <a href="{{route('site.especies')}}">Espécies</a>
                     </li>
-                    <li @if(Route::current()->getName() == 'site.login') class="active" @endif>
-                        <a href="{{route('site.login')}}">Equipe</a>
+                    
+                    {{-- @if (@Auth::user()->isAdmin())
+                    <div class="divider"></div>
+                    <li>
+                        <a href="#">Administração</a>
                     </li>
-                    <li @if(Route::current()->getName() == 'site.login') class="active" @endif>
-                        <a href="{{route('site.login')}}">Fórum</a>
+                    <div class="divider"></div>
+                    @endif --}}
+
+                    <li @if(Route::current()->getName() == 'site.logout') class="active" @endif>
+                        <a href="{{route('site.logout')}}">Logout</a>
                     </li>
-                    @if(Auth::guest())
-                    <li @if(Route::current()->getName() == 'site.login') class="active" @endif>
-                        <a href="{{route('site.login')}}">Login</a>
-                    </li>
-                    @else
-                    <li @if(Route::current()->getName() == 'ucp.logout') class="active" @endif>
-                        <a href="{{route('ucp.logout')}}">Logout ({{Auth::user()->Name}})</a>
-                    </li>
-                    @endif
                 </ul>
             </div>
         </nav>
@@ -49,42 +47,19 @@
             <li @if(Route::current()->getName() == 'site.login') class="active" @endif>
                 <a href="{{route('site.login')}}">Início</a>
             </li>
-            <li @if(Route::current()->getName() == 'site.login') class="active" @endif>
-                <a href="{{route('site.login')}}">Notícias</a>
-            </li>
-            <li @if(Route::current()->getName() == 'site.login') class="active" @endif>
-                <a href="{{route('site.login')}}">Equipe</a>
-            </li>
 
-            @if (Auth::user())
-            <div class="divider"></div>
-            <li @if(Route::current()->getName() == 'ucp.characters') class="active" @endif>
-                <a href="{{ route('ucp.characters') }}">Meus Personagens</a>
-            </li>
-            <li @if(Route::current()->getName() == 'ucp.characters.create') class="active" @endif>
-                <a href="{{ route('ucp.characters.create') }}">Criar Personagem</a>
-            </li>
-            @if (@Auth::user()->isAdmin())
+
+            {{-- @if (@Auth::user()->isAdmin())
             <div class="divider"></div>
             <li>
                 <a href="#">Administração</a>
             </li>
-            @endif
             <div class="divider"></div>
-            @endif
+            @endif --}}
 
-            <li @if(Route::current()->getName() == 'site.login') class="active" @endif>
-                <a href="{{route('site.login')}}">Fórum</a>
+            <li @if(Route::current()->getName() == 'site.logout') class="active" @endif>
+                <a href="{{route('site.logout')}}">Logout</a>
             </li>
-            @if(Auth::guest())
-            <li @if(Route::current()->getName() == 'site.login') class="active" @endif>
-                <a href="{{route('site.login')}}">Login</a>
-            </li>
-            @else
-            <li @if(Route::current()->getName() == 'ucp.logout') class="active" @endif>
-                <a href="{{route('ucp.logout')}}">Logout ({{Auth::user()->Name}})</a>
-            </li>
-            @endif
         </ul>
 
         @push('scripts')

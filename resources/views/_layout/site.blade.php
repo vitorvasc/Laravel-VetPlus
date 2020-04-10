@@ -1,6 +1,6 @@
 @include('_layout._includes.header')
 
-<div class="container-main padding-top-70">
+<div class="container main">
     @yield('conteudo')
 </div>
 

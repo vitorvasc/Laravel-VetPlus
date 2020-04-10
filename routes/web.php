@@ -21,5 +21,12 @@ Route::post('/login/validate', ['as' => 'site.login.validate', 'uses' => 'Login\
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/logout', ['as' => 'site.logout', 'uses' => 'Login\LoginController@logout']);
     
-    Route::get('/inicio', ['as' => 'site.logout', 'uses' => 'Home\HomeController@index']);
+    Route::get('/inicio', ['as' => 'site.home', 'uses' => 'Home\HomeController@index']);
+
+    Route::get('/especies', ['as' => 'site.especies', 'uses' => 'Especies\EspeciesController@index']);
+    Route::get('/especies/criar', ['as' => 'site.especies.create', 'uses' => 'Especies\EspeciesController@create']);
+    Route::post('/especies/criar', ['as' => 'site.especies.insert', 'uses' => 'Especies\EspeciesController@insert']);
+    Route::get('/especies/editar/{id}', ['as' => 'site.especies.edit', 'uses' => 'Especies\EspeciesController@edit']);
+    Route::post('/especies/editar/{id}', ['as' => 'site.especies.edit.validate', 'uses' => 'Especies\EspeciesController@editValidate']);
+
 });
