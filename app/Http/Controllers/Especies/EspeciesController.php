@@ -40,7 +40,9 @@ class EspeciesController extends Controller
                 'nome' => $data['nome'],
             ]);
 
-            return view('especies.create', ['message' => $message]);
+            $especies = Especie::orderBy('nome', 'asc')->get();
+
+            return view('especies.index', ['especies' => $especies, 'message' => $message]);
         }
     }
 

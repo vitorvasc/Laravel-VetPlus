@@ -38,4 +38,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin()
+    {
+        return $this->hasOne(\App\Models\Permissao::class, 'usuario_id', 'id')->where(function ($query) {
+            $query->where('cargo_id', 1);
+        })->exists();
+    }
+
+    public function permissoes() {
+        return $this->hasMany(\App\Models\Permissao::class, 'usuario_id', 'id');
+    }
 }

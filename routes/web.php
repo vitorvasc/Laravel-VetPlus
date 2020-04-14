@@ -29,4 +29,5 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/especies/editar/{id}', ['as' => 'site.especies.edit', 'uses' => 'Especies\EspeciesController@edit']);
     Route::post('/especies/editar/{id}', ['as' => 'site.especies.edit.validate', 'uses' => 'Especies\EspeciesController@editValidate']);
 
+    // Route::get('/racas', ['as' => 'site.racas', 'uses' => ])
 });

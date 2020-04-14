@@ -1,6 +1,6 @@
 @extends('_layout.site')
 
-@section('titulo', 'Espécies')
+@section('titulo', 'Raças')
 
 @section('conteudo')
 

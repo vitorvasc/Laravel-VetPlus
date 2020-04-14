@@ -13,4 +13,8 @@ class Especie extends Model
     protected $fillable = [
         'nome',
     ];
+
+    public function racas() {
+        return $this->hasMany(\App\Models\Raca::class, 'especie_id');
+    }
 }
