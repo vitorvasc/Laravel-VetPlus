@@ -38,7 +38,7 @@ class RacasController extends Controller
         } else {
             $message = [
                 'type' => 'success',
-                'text' => 'Espécie cadastrada com sucesso!'
+                'text' => 'Raça cadastrada com sucesso!'
             ];
 
             Raca::create([
@@ -58,5 +58,33 @@ class RacasController extends Controller
 
 
         return view('racas.edit', ['raca' => $raca, 'especies' => $especies]);
+    }
+
+    public function editValidate(Request $req, $id) {
+        $data = $req->all();
+        $raca = Raca::where('id', $id)->first();
+
+        if(Raca::where('nome', $data['nome'])->where('especie_id', $data['especie'])->first()) {
+            $especies = Especie::orderBy('nome', 'asc')->get();
+
+            $message = [
+                'type' => 'error',
+                'text' => 'Já existe uma raça com este nome para esta espécie.'
+            ];
+
+            return view('racas.edit', ['especies' => $especies, 'raca' => $raca, 'message' => $message]);
+        } else {
+            $message = [
+                'type' => 'success',
+                'text' => 'Raça alterada com sucesso.'
+            ];
+
+            $raca->nome = $data['nome'];
+            $raca->save();
+
+            $racas = Raca::orderBy('nome', 'asc')->get();
+
+            return view('racas.index', ['racas' => $racas, 'message' => $message]);
+        }
     }
 }

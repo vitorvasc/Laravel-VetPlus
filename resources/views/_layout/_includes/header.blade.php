@@ -24,6 +24,9 @@
             <li @if(Route::current()->getName() == 'site.racas') class="active" @endif>
                 <a href="{{route('site.racas')}}">Raças</a>
             </li>
+            <li @if(Route::current()->getName() == 'site.usuarios') class="active" @endif>
+                <a href="{{route('site.usuarios')}}">Usuários</a>
+            </li>
             {{-- <li class="divider"></li>
             <li><a href="#!">three</a></li> --}}
         </ul>

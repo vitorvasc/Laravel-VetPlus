@@ -4,7 +4,7 @@
 
 @section('conteudo')
 
-<div class="row content especies">
+<div class="row content list">
     <form class="col s12 l10 push-l1" method="POST" enctype="multipart/form-data"
         action="{{route('site.racas.edit.validate', $raca->id)}}">
 

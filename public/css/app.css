@@ -32,11 +32,6 @@ div.login div.col form div.row {
   text-align: right;
 }
 
-div.especies div.button {
-  text-align: right;
-  margin-bottom: 10px;
-}
-
 body {
   background-color: #71c7ec;
   color: #363636;
@@ -112,6 +107,11 @@ div.message-box div.col.error {
 div.message-box div.col.success {
   background-color: #388e3c;
   color: #ffffff;
+}
+
+div.list div.button {
+  text-align: right;
+  margin-bottom: 10px;
 }
 
 /* Inputs */

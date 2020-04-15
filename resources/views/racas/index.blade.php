@@ -4,7 +4,7 @@
 
 @section('conteudo')
 
-<div class="row content especies">
+<div class="row content list">
 
     <div class="col s12 button">
         <a href="{{route('site.racas.create')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i

@@ -35,5 +35,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/racas/editar/{id}', ['as' => 'site.racas.edit', 'uses' => 'Racas\RacasController@edit']);
     Route::post('/racas/editar/{id}', ['as' => 'site.racas.edit.validate', 'uses' => 'Racas\RacasController@editValidate']);
 
-
+    Route::get('/usuarios', ['as' => 'site.usuarios', 'uses' => 'Usuarios\UsuariosController@index']);
+    Route::get('/usuarios/criar', ['as' => 'site.usuarios.create', 'uses' => 'Usuarios\UsuariosController@create']);
+    Route::post('/usuarios/criar', ['as' => 'site.usuarios.insert', 'uses' => 'Usuarios\UsuariosController@insert']);
+    Route::get('/usuarios/editar/{id}', ['as' => 'site.usuarios.edit', 'uses' => 'Usuarios\UsuariosController@edit']);
+    Route::post('/usuarios/editar/{id}', ['as' => 'site.usuarios.edit.validate', 'uses' => 'Usuarios\UsuariosController@editValidate']);
 });

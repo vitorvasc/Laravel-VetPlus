@@ -1,13 +1,13 @@
 @extends('_layout.site')
 
-@section('titulo', 'Espécies')
+@section('titulo', 'Usuários')
 
 @section('conteudo')
 
 <div class="row content list">
 
     <div class="col s12 button">
-        <a href="{{route('site.especies.create')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
+        <a href="{{route('site.usuarios.create')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
                 class="material-icons right tiny">add_circle_outline</i>inserir espécie</a>
     </div>
 
@@ -17,10 +17,10 @@
 
     <div class="col s12">
         <ul class="collection with-header">
-            <li class="collection-header"><h5>Espécies</h5></li>
-            @foreach ($especies as $especie)
+            <li class="collection-header"><h5>Usuários</h5></li>
+            @foreach ($usuarios as $usuario)
             <li class="collection-item">
-                <div>{{$especie->nome}}<a href="{{route('site.especies.edit', $especie->id)}}"
+                <div>(ID: {{$usuario->id}}) {{$usuario->nome_completo}}<a href="{{route('site.usuarios.edit', $usuario->id)}}"
                         class="secondary-content"><i class="material-icons">edit</i></a>
                 </div>
             </li>
