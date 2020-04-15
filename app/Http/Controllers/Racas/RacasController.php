@@ -80,6 +80,7 @@ class RacasController extends Controller
             ];
 
             $raca->nome = $data['nome'];
+            $raca->especie_id = (int) $data['especie'];
             $raca->save();
 
             $racas = Raca::orderBy('nome', 'asc')->get();
