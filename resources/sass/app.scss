@@ -17,6 +17,28 @@ body {
                 margin-left: 15px;
             }
         }
+
+        .dropdown-content {
+            top: 64px !important;
+        
+            li {
+                background-color: #01579b;
+                color: #ffffff;
+        
+                a {
+                    background-color: #01579b;
+                    color: #ffffff;
+                }
+        
+                &.divider {
+                    background-color: lighten(#01579b, 10%);
+                }
+        
+                &:hover, &.active {
+                    background-color: darken(#01579b, 0.1);
+                }
+            }
+        }        
     }
 
     div.container {
@@ -65,27 +87,27 @@ div.message-box {
 /* label color */
 .input-field label {
     color: #01579b;
-  }
-  /* label focus color */
-  .input-field input[type=text]:focus + label {
+}
+/* label focus color */
+.input-field input[type="text"]:focus + label {
     color: #01579b;
-  }
-  /* label underline focus color */
-  .input-field input[type=text]:focus {
+}
+/* label underline focus color */
+.input-field input[type="text"]:focus {
     border-bottom: 1px solid #01579b;
     box-shadow: 0 1px 0 0 #01579b;
-  }
-  /* valid color */
-  .input-field input[type=text].valid {
+}
+/* valid color */
+.input-field input[type="text"].valid {
     border-bottom: 1px solid #01579b;
     box-shadow: 0 1px 0 0 #01579b;
-  }
-  /* invalid color */
-  .input-field input[type=text].invalid {
+}
+/* invalid color */
+.input-field input[type="text"].invalid {
     border-bottom: 1px solid #01579b;
     box-shadow: 0 1px 0 0 #01579b;
-  }
-  /* icon prefix focus color */
-  .input-field .prefix.active {
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
     color: #01579b;
-  }
+}

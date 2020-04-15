@@ -54,6 +54,29 @@ body nav {
   }
 }
 
+body nav .dropdown-content {
+  top: 64px !important;
+}
+
+body nav .dropdown-content li {
+  background-color: #01579b;
+  color: #ffffff;
+}
+
+body nav .dropdown-content li a {
+  background-color: #01579b;
+  color: #ffffff;
+}
+
+body nav .dropdown-content li.divider {
+  background-color: #0173ce;
+}
+
+body nav .dropdown-content li:hover,
+body nav .dropdown-content li.active {
+  background-color: #01579a;
+}
+
 body div.container.main {
   padding-top: 20px;
 }

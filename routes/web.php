@@ -29,5 +29,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/especies/editar/{id}', ['as' => 'site.especies.edit', 'uses' => 'Especies\EspeciesController@edit']);
     Route::post('/especies/editar/{id}', ['as' => 'site.especies.edit.validate', 'uses' => 'Especies\EspeciesController@editValidate']);
 
-    // Route::get('/racas', ['as' => 'site.racas', 'uses' => ])
+    Route::get('/racas', ['as' => 'site.racas', 'uses' => 'Racas\RacasController@index']);
+    Route::get('/racas/criar', ['as' => 'site.racas.create', 'uses' => 'Racas\RacasController@create']);
+    Route::post('/racas/criar', ['as' => 'site.racas.insert', 'uses' => 'Racas\RacasController@insert']);
+    Route::get('/racas/editar/{id}', ['as' => 'site.racas.edit', 'uses' => 'Racas\RacasController@edit']);
+    Route::post('/racas/editar/{id}', ['as' => 'site.racas.edit.validate', 'uses' => 'Racas\RacasController@editValidate']);
+
+
 });

@@ -7,8 +7,8 @@
 <div class="row content especies">
 
     <div class="col s12 button">
-        <a href="{{route('site.especies.create')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
-                class="material-icons right tiny">add_circle_outline</i>criar espécie</a>
+        <a href="{{route('site.racas.create')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
+                class="material-icons right tiny">add_circle_outline</i>inserir raça</a>
     </div>
 
     @if ($message ?? '')
@@ -17,10 +17,10 @@
 
     <div class="col s12">
         <ul class="collection with-header">
-            <li class="collection-header"><h5>Espécies</h5></li>
-            @foreach ($especies as $especie)
+            <li class="collection-header"><h5>Raças</h5></li>
+            @foreach ($racas as $raca)
             <li class="collection-item">
-                <div>{{$especie->nome}}<a href="{{route('site.especies.edit', $especie->id)}}"
+                <div>{{$raca->nome}} ({{$raca->especie->nome}})<a href="{{route('site.racas.edit', $raca->id)}}"
                         class="secondary-content"><i class="material-icons">edit</i></a>
                 </div>
             </li>

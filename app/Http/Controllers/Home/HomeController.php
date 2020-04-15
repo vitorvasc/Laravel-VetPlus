@@ -9,12 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index() {
-
-        $user = User::where('id', 1)->first();
-
-        dd($user->permissoes());
-
+    public function index()
+    {
         return view('home.index');
     }
 }

@@ -8,7 +8,7 @@
 
     <div class="col s12 button">
         <a href="{{route('site.especies.create')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
-                class="material-icons right tiny">add_circle_outline</i>criar espécie</a>
+                class="material-icons right tiny">add_circle_outline</i>inserir espécie</a>
     </div>
 
     @if ($message ?? '')

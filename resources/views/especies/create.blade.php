@@ -1,6 +1,6 @@
 @extends('_layout.site')
 
-@section('titulo', 'Espécies - Criar')
+@section('titulo', 'Espécies - Inserir')
 
 @section('conteudo')
 
