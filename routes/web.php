@@ -40,4 +40,5 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/usuarios/criar', ['as' => 'site.usuarios.insert', 'uses' => 'Usuarios\UsuariosController@insert']);
     Route::get('/usuarios/editar/{id}', ['as' => 'site.usuarios.edit', 'uses' => 'Usuarios\UsuariosController@edit']);
     Route::post('/usuarios/editar/{id}', ['as' => 'site.usuarios.edit.validate', 'uses' => 'Usuarios\UsuariosController@editValidate']);
+    Route::get('/usuarios/ativar/{id}', ['as' => 'site.usuarios.changestatus', 'uses' => 'Usuarios\UsuariosController@changeStatus']);
 });

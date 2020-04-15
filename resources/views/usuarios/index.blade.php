@@ -5,27 +5,42 @@
 @section('conteudo')
 
 <div class="row content list">
-
-    <div class="col s12 button">
-        <a href="{{route('site.usuarios.create')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
-                class="material-icons right tiny">add_circle_outline</i>inserir espécie</a>
-    </div>
-
-    @if ($message ?? '')
-    @include('_layout.error', ['message' => $message ?? ''])
-    @endif
-
     <div class="col s12">
-        <ul class="collection with-header">
-            <li class="collection-header"><h5>Usuários</h5></li>
-            @foreach ($usuarios as $usuario)
-            <li class="collection-item">
-                <div>(ID: {{$usuario->id}}) {{$usuario->nome_completo}}<a href="{{route('site.usuarios.edit', $usuario->id)}}"
-                        class="secondary-content"><i class="material-icons">edit</i></a>
-                </div>
-            </li>
-            @endforeach
-        </ul>
+        <h5>Usuários</h5>
+
+        <div class="col s12 button">
+            <a href="{{route('site.usuarios.create')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
+                    class="material-icons right tiny">add_circle_outline</i>Novo usuário</a>
+        </div>
+
+        @if ($message ?? '')
+        @include('_layout.error', ['message' => $message ?? ''])
+        @endif
+
+        <table class="centered striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Ativo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach ($usuarios as $usuario)
+                <tr>
+                    <td>{{$usuario->id}}</td>
+                    <td>{{$usuario->nome_completo}}</td>
+                    <td>{{$usuario->email}}</td>
+                    <td>{{$usuario->ativo ? 'Sim' : 'Não'}}</td>
+                    <td><a href="{{route('site.usuarios.edit', $usuario->id)}}"><i class="material-icons">edit</i></a>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
 
