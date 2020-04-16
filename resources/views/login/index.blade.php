@@ -5,7 +5,7 @@
 @section('conteudo')
 
 <div class="row login">
-    <div class="col s6 push-s3">
+    <div class="col s12 l6 push-l3">
         <div class="row box-title">
             <h3>{{@env('APP_NAME')}}</h3>
         </div>

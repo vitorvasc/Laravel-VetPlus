@@ -4,13 +4,17 @@
 <head>
     <title>{{@env('APP_NAME')}} - @yield('titulo')</title>
     <meta charset="UTF-8">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">    
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,400,600&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name=”description” content=" Diga adeus às planilhas. VetPlus é um sistema voltado para a gestão de clínicas veterinárias.">
+    <meta name=”description”
+        content=" Diga adeus às planilhas. VetPlus é um sistema voltado para a gestão de clínicas veterinárias.">
 </head>
 
 <body>
@@ -56,9 +60,27 @@
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
+            <div class="divider"></div>
+
             <li @if(Route::current()->getName() == 'site.login') class="active" @endif>
                 <a href="{{route('site.login')}}">Início</a>
             </li>
+
+            @if (@Auth::user()->isAdmin())
+            <div class="divider"></div>
+
+            <li @if(Route::current()->getName() == 'site.especies') class="active" @endif>
+                <a href="{{route('site.especies')}}">Espécies</a>
+            </li>
+            <li @if(Route::current()->getName() == 'site.racas') class="active" @endif>
+                <a href="{{route('site.racas')}}">Raças</a>
+            </li>
+            <li @if(Route::current()->getName() == 'site.usuarios') class="active" @endif>
+                <a href="{{route('site.usuarios')}}">Usuários</a>
+            </li>
+
+            <div class="divider"></div>
+            @endif
 
 
             {{-- @if (@Auth::user()->isAdmin())

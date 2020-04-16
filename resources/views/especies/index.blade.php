@@ -17,7 +17,7 @@
         @include('_layout.error', ['message' => $message ?? ''])
         @endif
 
-        <table class="centered striped">
+        <table id="especies" class="centered striped responsive-table">
             <thead>
                 <tr>
                     <th>Nome</th>
@@ -37,6 +37,14 @@
         </table>
     </div>
 </div>
+
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $('#especies').DataTable();
+    });
+</script>
+@endpush
 
 
 @endsection
