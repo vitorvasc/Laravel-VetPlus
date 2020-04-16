@@ -39,6 +39,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $with = [
+        'permissoes',
+    ];
+
     public function isAdmin()
     {
         return $this->hasOne(\App\Models\Permissao::class, 'usuario_id', 'id')->where(function ($query) {
@@ -46,7 +50,8 @@ class User extends Authenticatable
         })->exists();
     }
 
-    public function permissoes() {
+    public function permissoes()
+    {
         return $this->hasMany(\App\Models\Permissao::class, 'usuario_id', 'id');
     }
 }

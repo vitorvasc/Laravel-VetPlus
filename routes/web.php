@@ -18,9 +18,9 @@ Route::get('/', ['uses' => 'Login\LoginController@index']);
 Route::get('/login', ['as' => 'site.login', 'uses' => 'Login\LoginController@index']);
 Route::post('/login/validate', ['as' => 'site.login.validate', 'uses' => 'Login\LoginController@login']);
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout', ['as' => 'site.logout', 'uses' => 'Login\LoginController@logout']);
-    
+
     Route::get('/inicio', ['as' => 'site.home', 'uses' => 'Home\HomeController@index']);
 
     Route::get('/especies', ['as' => 'site.especies', 'uses' => 'Especies\EspeciesController@index']);
@@ -40,5 +40,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/usuarios/criar', ['as' => 'site.usuarios.insert', 'uses' => 'Usuarios\UsuariosController@insert']);
     Route::get('/usuarios/editar/{id}', ['as' => 'site.usuarios.edit', 'uses' => 'Usuarios\UsuariosController@edit']);
     Route::post('/usuarios/editar/{id}', ['as' => 'site.usuarios.edit.validate', 'uses' => 'Usuarios\UsuariosController@editValidate']);
-    Route::get('/usuarios/ativar/{id}', ['as' => 'site.usuarios.changestatus', 'uses' => 'Usuarios\UsuariosController@changeStatus']);
+    Route::get('/usuarios/ativar/{id}', ['as' => 'site.usuarios.edit.status', 'uses' => 'Usuarios\UsuariosController@changeStatus']);
+    Route::post('/usuarios/editar/{id}/permissao', ['as' => 'site.usuarios.edit.permission', 'uses' => 'Usuarios\UsuariosController@changePermission']);
+
+    
 });

@@ -8,6 +8,17 @@ class Permissao extends Model
 {
     protected $table = 'usuarios_permissoes';
 
+    protected $fillable = [
+        'usuario_id',
+        'cargo_id'
+    ];
+
+    public $timestamps = false;
+
+    protected $with = [
+        'cargo',
+    ];
+
     public function cargo() {
         return $this->belongsTo(\App\Models\Cargo::class, 'cargo_id');
     }
