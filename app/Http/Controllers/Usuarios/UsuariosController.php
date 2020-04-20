@@ -14,12 +14,12 @@ class UsuariosController extends Controller
     public function index()
     {
         $usuarios = User::orderBy('id', 'asc')->get();
-        return view('usuarios.index', ['usuarios' => $usuarios]);
+        return view('administracao.usuarios.index', ['usuarios' => $usuarios]);
     }
 
     public function create()
     {
-        return view('usuarios.create');
+        return view('administracao.usuarios.create');
     }
 
     public function insert(Request $req)
@@ -32,7 +32,7 @@ class UsuariosController extends Controller
                 'text' => 'Já existe um usuário cadastrado com este e-mail.'
             ];
 
-            return view('usuarios.create', ['message' => $message]);
+            return view('administracao.usuarios.create', ['message' => $message]);
         } else {
             $message = [
                 'type' => 'success',
@@ -48,7 +48,7 @@ class UsuariosController extends Controller
 
             $usuarios = User::orderBy('id', 'asc')->get();
 
-            return view('usuarios.index', ['usuarios' => $usuarios, 'message' => $message]);
+            return view('administracao.usuarios.index', ['usuarios' => $usuarios, 'message' => $message]);
         }
     }
 
@@ -57,7 +57,7 @@ class UsuariosController extends Controller
         $usuario = User::where('id', $id)->first();
         $cargos = Cargo::all();
 
-        return view('usuarios.edit', ['usuario' => $usuario, 'cargos' => $cargos]);
+        return view('administracao.usuarios.edit', ['usuario' => $usuario, 'cargos' => $cargos]);
     }
 
     public function editValidate(Request $req, $id)
@@ -73,7 +73,7 @@ class UsuariosController extends Controller
             $cargos = Cargo::all();
 
 
-            return view('usuarios.edit', ['usuario' => $usuario, 'message' => $message, 'cargos' => $cargos]);
+            return view('administracao.usuarios.edit', ['usuario' => $usuario, 'message' => $message, 'cargos' => $cargos]);
         } else {
             $message = [
                 'type' => 'success',
@@ -86,7 +86,7 @@ class UsuariosController extends Controller
 
             $usuarios = User::orderBy('id', 'asc')->get();
 
-            return view('usuarios.index', ['usuarios' => $usuarios, 'message' => $message]);
+            return view('administracao.usuarios.index', ['usuarios' => $usuarios, 'message' => $message]);
         }
     }
 
@@ -105,7 +105,7 @@ class UsuariosController extends Controller
 
             $usuarios = User::orderBy('id', 'asc')->get();
 
-            return view('usuarios.index', ['usuarios' => $usuarios, 'message' => $message]);
+            return view('administracao.usuarios.index', ['usuarios' => $usuarios, 'message' => $message]);
         } else {
             $usuario->ativo = 1;
             $usuario->save();
@@ -117,7 +117,7 @@ class UsuariosController extends Controller
 
             $usuarios = User::orderBy('id', 'asc')->get();
 
-            return view('usuarios.index', ['usuarios' => $usuarios, 'message' => $message]);
+            return view('administracao.usuarios.index', ['usuarios' => $usuarios, 'message' => $message]);
         }
     }
 

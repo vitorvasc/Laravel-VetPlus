@@ -11,12 +11,12 @@ class EspeciesController extends Controller
     public function index()
     {
         $especies = Especie::orderBy('nome', 'asc')->get();
-        return view('especies.index', ['especies' => $especies]);
+        return view('administracao.especies.index', ['especies' => $especies]);
     }
 
     public function create()
     {
-        return view('especies.create');
+        return view('administracao.especies.create');
     }
 
     public function insert(Request $req)
@@ -29,7 +29,7 @@ class EspeciesController extends Controller
                 'text' => 'Já existe uma espécie com este nome.'
             ];
 
-            return view('especies.create', ['message' => $message]);
+            return view('administracao.especies.create', ['message' => $message]);
         } else {
             $message = [
                 'type' => 'success',
@@ -42,7 +42,7 @@ class EspeciesController extends Controller
 
             $especies = Especie::orderBy('nome', 'asc')->get();
 
-            return view('especies.index', ['especies' => $especies, 'message' => $message]);
+            return view('administracao.especies.index', ['especies' => $especies, 'message' => $message]);
         }
     }
 
@@ -50,7 +50,7 @@ class EspeciesController extends Controller
     {
         $especie = Especie::where('id', $id)->first();
 
-        return view('especies.edit', ['especie' => $especie]);
+        return view('administracao.especies.edit', ['especie' => $especie]);
     }
 
     public function editValidate(Request $req, $id) {
@@ -63,7 +63,7 @@ class EspeciesController extends Controller
                 'text' => 'Já existe uma espécie com este nome.'
             ];
 
-            return view('especies.edit', ['especie' => $especie, 'message' => $message]);
+            return view('administracao.especies.edit', ['especie' => $especie, 'message' => $message]);
         } else {
             $message = [
                 'type' => 'success',
@@ -75,7 +75,7 @@ class EspeciesController extends Controller
 
             $especies = Especie::orderBy('nome', 'asc')->get();
 
-            return view('especies.index', ['especies' => $especies, 'message' => $message]);
+            return view('administracao.especies.index', ['especies' => $especies, 'message' => $message]);
         }
     }
 }

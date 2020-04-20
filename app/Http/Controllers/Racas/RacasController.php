@@ -13,14 +13,14 @@ class RacasController extends Controller
     {
         $racas = Raca::orderBy('nome', 'asc')->get();
 
-        return view('racas.index', ['racas' => $racas]);
+        return view('administracao.racas.index', ['racas' => $racas]);
     }
 
     public function create()
     {
         $especies = Especie::orderBy('nome', 'asc')->get();
 
-        return view('racas.create', ['especies' => $especies]);
+        return view('administracao.racas.create', ['especies' => $especies]);
     }
 
     public function insert(Request $req) {
@@ -34,7 +34,7 @@ class RacasController extends Controller
                 'text' => 'Já existe uma raça com este nome para esta espécie.'
             ];
 
-            return view('racas.create', ['especies' => $especies, 'message' => $message]);
+            return view('administracao.racas.create', ['especies' => $especies, 'message' => $message]);
         } else {
             $message = [
                 'type' => 'success',
@@ -48,7 +48,7 @@ class RacasController extends Controller
             
             $racas = Raca::orderBy('nome', 'asc')->get();
 
-            return view('racas.index', ['racas' => $racas, 'message' => $message]);
+            return view('administracao.racas.index', ['racas' => $racas, 'message' => $message]);
         }
     }
 
@@ -57,7 +57,7 @@ class RacasController extends Controller
         $especies = Especie::orderBy('nome', 'asc')->get();
 
 
-        return view('racas.edit', ['raca' => $raca, 'especies' => $especies]);
+        return view('administracao.racas.edit', ['raca' => $raca, 'especies' => $especies]);
     }
 
     public function editValidate(Request $req, $id) {
@@ -72,7 +72,7 @@ class RacasController extends Controller
                 'text' => 'Já existe uma raça com este nome para esta espécie.'
             ];
 
-            return view('racas.edit', ['especies' => $especies, 'raca' => $raca, 'message' => $message]);
+            return view('administracao.racas.edit', ['especies' => $especies, 'raca' => $raca, 'message' => $message]);
         } else {
             $message = [
                 'type' => 'success',
@@ -85,7 +85,7 @@ class RacasController extends Controller
 
             $racas = Raca::orderBy('nome', 'asc')->get();
 
-            return view('racas.index', ['racas' => $racas, 'message' => $message]);
+            return view('administracao.racas.index', ['racas' => $racas, 'message' => $message]);
         }
     }
 }
