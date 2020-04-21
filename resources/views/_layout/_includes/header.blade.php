@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">    
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,400,600&display=swap">
@@ -43,6 +43,10 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li @if(Route::current()->getName() == 'site.home') class="active" @endif>
                         <a href="{{route('site.home')}}">Início</a>
+                    </li>
+
+                    <li @if(Route::current()->getName() == 'site.clientes') class="active" @endif>
+                        <a href="{{route('site.clientes')}}">Clientes</a>
                     </li>
 
                     @if (@Auth::user()->isAdmin())

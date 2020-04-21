@@ -43,5 +43,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/usuarios/ativar/{id}', ['as' => 'site.usuarios.edit.status', 'uses' => 'Usuarios\UsuariosController@changeStatus']);
     Route::post('/usuarios/editar/{id}/permissao', ['as' => 'site.usuarios.edit.permission', 'uses' => 'Usuarios\UsuariosController@changePermission']);
 
-    
+    Route::get('/clientes', ['as' => 'site.clientes', 'uses' => 'Clientes\ClientesController@index']);
+    Route::get('/clientes/criar', ['as' => 'site.clientes.create', 'uses' => 'Clientes\ClientesController@create']);
+    Route::post('/clientes/criar', ['as' => 'site.clientes.insert', 'uses' => 'Clientes\ClientesController@insert']);
+    Route::get('/clientes/editar/{id}', ['as' => 'site.clientes.edit', 'uses' => 'Clientes\ClientesController@edit']);
+
 });
