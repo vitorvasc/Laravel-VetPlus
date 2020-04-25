@@ -29,11 +29,11 @@
             <div class="row">
                 <div class="input-field col s6">
                     <input id="nome" name="nome" type="text" required class="validate"
-                        value="{{$usuario->nome_completo}}">
+                        value="{{$usuario->nome_completo}}" maxlength="64">
                     <label for="nome">Nome completo</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="email" name="email" type="text" required class="validate" value="{{$usuario->email}}">
+                    <input id="email" name="email" type="text" required class="validate" value="{{$usuario->email}}" maxlength="128">
                     <label for="email">E-mail</label>
                 </div>
             </div>

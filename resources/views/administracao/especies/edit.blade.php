@@ -18,7 +18,7 @@
         </div>
 
         <div class="input-field col s12">
-            <input id="nome" name="nome" type="text" required class="validate" value="{{$especie->nome}}">
+            <input id="nome" name="nome" type="text" required class="validate" value="{{$especie->nome}}" maxlength="64">
             <label for="nome">Nome da espécie</label>
         </div>
 
