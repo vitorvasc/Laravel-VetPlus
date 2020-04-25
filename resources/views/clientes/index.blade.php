@@ -22,7 +22,7 @@
                 <tr>
                     <th>Nome</th>
                     <th>CPF</th>
-                    {{-- <th>E-mail</th> --}}
+                    <th>E-mail</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -32,7 +32,7 @@
                 <tr>
                     <td>{{$cliente->nome_completo}}</td>
                     <td>{{$cliente->cpf}}</td>
-                    {{-- <td>{{$cliente->email}}</td> --}}
+                    <td>{{$cliente->email->email}}</td>
                     <td><a href="{{route('site.clientes.edit', $cliente->id)}}"><i class="material-icons">edit</i></a>
                     </td>
                 </tr>
