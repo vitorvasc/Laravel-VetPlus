@@ -10,11 +10,11 @@
     @endif
 
     {{ csrf_field() }}
-    <div class="col s12 l10 push-l1">
+    <div class="col s12">
         <h5>Alterar cliente: {{$cliente->nome_completo}}</h5>
     </div>
 
-    <div class="col s12 l10 push-l1" style="margin: 15px 0 30px;">
+    <div class="col s12" style="margin: 15px 0 30px;">
         <ul class="tabs">
             <li class="tab col s3"><a class="active" href="#info">Dados pessoais</a></li>
             <li class="tab col s3"><a href="#enderecos">Endereços</a></li>
@@ -22,7 +22,7 @@
         </ul>
     </div>
 
-    <div id="info" class="col s12 l10 push-l1">
+    <div id="info" class="col s12">
         <form class="s12" method="POST" enctype="multipart/form-data"
             action="{{route('site.clientes.edit.validate', $cliente->id)}}">
             <h6>Dados pessoais</h6>
@@ -51,7 +51,7 @@
         </form>
     </div>
 
-    <div id="enderecos" class="col s12 l10 push-l1">
+    <div id="enderecos" class="col s12">
         <form class="s12" method="POST" enctype="multipart/form-data"
             action="{{route('site.clientes.edit.validate', $cliente->id)}}">
             <h6>Endereços</h6>
@@ -98,7 +98,7 @@
         </form>
     </div>
 
-    <div id="contatos" class="col s12 l10 push-l1">
+    <div id="contatos" class="col s12">
         <form class="s12" method="POST" enctype="multipart/form-data"
             action="{{route('site.clientes.edit.validate', $cliente->id)}}">
 

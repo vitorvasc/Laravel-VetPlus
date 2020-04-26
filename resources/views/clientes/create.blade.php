@@ -5,7 +5,7 @@
 @section('conteudo')
 
 <div class="row content list">
-    <form class="col s12 l10 push-l1" method="POST" enctype="multipart/form-data"
+    <form class="col s12" method="POST" enctype="multipart/form-data"
         action="{{route('site.clientes.insert')}}">
 
         @if ($message ?? '')

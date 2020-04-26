@@ -5,7 +5,7 @@
 @section('conteudo')
 
 <div class="row content list">
-    <form class="col s12 l10 push-l1" method="POST" enctype="multipart/form-data"
+    <form class="col s12" method="POST" enctype="multipart/form-data"
         action="{{route('site.especies.edit.validate', $especie->id)}}">
 
         @if ($message ?? '')
@@ -13,18 +13,23 @@
         @endif
 
         {{ csrf_field() }}
-        <div class="row">
-            <h5>Alterar uma espécie</h5>
-        </div>
 
-        <div class="input-field col s12">
-            <input id="nome" name="nome" type="text" required class="validate" value="{{$especie->nome}}" maxlength="64">
-            <label for="nome">Nome da espécie</label>
-        </div>
+        <div class="col s12">
 
-        <div class="button">
-            <button class="btn-small waves-effect waves-blue light-blue darken-4" type="submit">salvar alterações
-            </button>
+            <div class="row">
+                <h5>Alterar uma espécie</h5>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="nome" name="nome" type="text" required class="validate" value="{{$especie->nome}}"
+                    maxlength="64">
+                <label for="nome">Nome da espécie</label>
+            </div>
+
+            <div class="button">
+                <button class="btn-small waves-effect waves-blue light-blue darken-4" type="submit">salvar alterações
+                </button>
+            </div>
         </div>
     </form>
 </div>
