@@ -11,6 +11,7 @@ class Telefone extends Model
     protected $fillable = [
         'cliente_id',
         'telefone',
+        'whatsapp',
     ];
 
     public $timestamps = false;

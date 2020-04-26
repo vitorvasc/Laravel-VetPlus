@@ -15,7 +15,14 @@ class ClientesController extends Controller
     public function index()
     {
         $clientes = Cliente::orderBy('id', 'asc')->get();
+        
+            
         return view('clientes.index', ['clientes' => $clientes]);
+    }
+
+    public function view($id) {
+        $cliente = Cliente::where('id', $id)->first();
+        return view('clientes.view', ['cliente' => $cliente]);
     }
 
     public function create()
@@ -25,8 +32,6 @@ class ClientesController extends Controller
 
     public function insert(Request $req)
     {
-        // dd($req);
-
         $data = $req->all();
 
         if (Cliente::where('cpf', $data['cpf'])->first()) {
@@ -45,7 +50,7 @@ class ClientesController extends Controller
             $cliente = Cliente::create([
                 'nome_completo' => $data['nome'],
                 'cpf' => $data['cpf'],
-                'rg' => $data['rg'],
+                'rg' => isset($data['rg']) ? $data['rg'] : '',
                 'cadastrado_por' => Auth::user()->id,
             ]);
 
@@ -68,6 +73,7 @@ class ClientesController extends Controller
             Telefone::create([
                 'cliente_id' => $cliente->id,
                 'telefone' => $data['telefone'],
+                'whatsapp' => (int) $data['whatsapp'],
             ]);
 
             $clientes = Cliente::orderBy('id', 'asc')->get();

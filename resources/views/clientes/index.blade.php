@@ -22,6 +22,7 @@
                 <tr>
                     <th>Nome</th>
                     <th>CPF</th>
+                    <th>Telefone</th>
                     <th>E-mail</th>
                     <th>Ações</th>
                 </tr>
@@ -32,8 +33,22 @@
                 <tr>
                     <td>{{$cliente->nome_completo}}</td>
                     <td>{{$cliente->cpf}}</td>
-                    <td>{{$cliente->email->email}}</td>
-                    <td><a href="{{route('site.clientes.edit', $cliente->id)}}"><i class="material-icons">edit</i></a>
+                    @if (isset($cliente->whatsapp->telefone))
+                    <td class="whatsapp">
+                        @php
+                            $characters = array(' ', '-', '(', ')');
+                            $whatsapp = str_replace($characters, '', $cliente->whatsapp->telefone);
+                        @endphp
+                        <a href="https://api.whatsapp.com/send?phone=+55{{$whatsapp}}" target="_blank">{{$cliente->whatsapp->telefone}}</a>
+                    </td>   
+                    @else
+                    <td>{{$cliente->telefones[0]->telefone}}</td>
+                    @endif
+
+                    <td>{{$cliente->emails[0]->email}}</td>
+                    <td>
+                        <a href="{{route('site.clientes.view', $cliente->id)}}"><i class="material-icons">person</i></a>
+                        <a href="{{route('site.clientes.edit', $cliente->id)}}"><i class="material-icons">edit</i></a>
                     </td>
                 </tr>
                 @endforeach

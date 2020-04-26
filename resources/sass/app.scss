@@ -88,6 +88,20 @@ div.list {
         text-align: right;
         margin-bottom: 10px;
     }
+    
+    .whatsapp {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-image: url('http://127.0.0.1:8000/images/whatsapp.svg');
+            margin-left: 7px;
+        }
+    }
 }
 
 /* Inputs */

@@ -93,6 +93,9 @@
                         "_token": "{{ csrf_token() }}",
                         "type": 'add',
                         "cargo_id": permissionID,
+                    },
+                    success: function() {
+                        M.toast({html: 'Permissão adicionada com sucesso.'});
                     }
                 });
             },
@@ -105,6 +108,9 @@
                         "_token": "{{ csrf_token() }}",
                         "type": 'delete',
                         "cargo_id": permissionID,
+                    },
+                    success: function() {
+                        M.toast({html: 'Permissão removida com sucesso.'});
                     }
                 });
             }
