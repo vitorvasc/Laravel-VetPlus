@@ -83,6 +83,8 @@ class ClientesController extends Controller
 
     public function edit($id)
     {
-        return view('clientes.edit');
+        $cliente = Cliente::where('id', $id)->first();
+
+        return view('clientes.edit', ['cliente' => $cliente]);
     }
 }

@@ -48,5 +48,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/clientes/criar', ['as' => 'site.clientes.create', 'uses' => 'Clientes\ClientesController@create']);
     Route::post('/clientes/criar', ['as' => 'site.clientes.insert', 'uses' => 'Clientes\ClientesController@insert']);
     Route::get('/clientes/editar/{id}', ['as' => 'site.clientes.edit', 'uses' => 'Clientes\ClientesController@edit']);
+    Route::post('/clientes/editar/{id}', ['as' => 'site.clientes.edit.validate', 'uses' => 'Clientes\ClientesController@editValidate']);
 
 });
