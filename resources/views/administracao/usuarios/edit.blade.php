@@ -20,8 +20,8 @@
         <form method="POST" enctype="multipart/form-data"
             action="{{route('site.usuarios.edit.validate', $usuario->id)}}">
 
-            @if ($message ?? '')
-            @include('_layout.error', ['message' => $message ?? ''])
+            @if (isset($message) || session('message'))
+            @include('_layout.error', ['message' => isset($message) ? $message : session('message')])
             @endif
 
             {{ csrf_field() }}
@@ -29,12 +29,14 @@
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="nome" name="nome" type="text" required class="validate"
-                            value="{{$usuario->nome_completo}}" maxlength="64">
+                        <input id="nome" name="nome" type="text" required class="validate" @if(session('data'))
+                            value="{{session('data')['nome']}}" @else value="{{$usuario->nome_completo}}" @endif
+                            maxlength="64">
                         <label for="nome">Nome completo</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="email" name="email" type="text" required class="validate" value="{{$usuario->email}}"
+                        <input id="email" name="email" type="text" required class="validate" @if(session('data'))
+                            value="{{session('data')['email']}}" @else value="{{$usuario->email}}" @endif
                             maxlength="128">
                         <label for="email">E-mail</label>
                     </div>

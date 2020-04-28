@@ -32,23 +32,23 @@ class UsuariosController extends Controller
                 'text' => 'Já existe um usuário cadastrado com este e-mail.'
             ];
 
-            return view('administracao.usuarios.create', ['message' => $message]);
+            return redirect()->route('site.usuarios.create')->with(['data' => $data, 'message' => $message]);
         } else {
             $message = [
                 'type' => 'success',
                 'text' => 'Usuário cadastrado com sucesso! A senha foi enviada para o e-mail cadastrado. Lembre-se de definir as permissões deste usuário.'
             ];
 
-            User::create([
+            $user = User::create([
                 'nome_completo' => $data['nome'],
                 'email' => $data['email'],
                 'password' => Hash::make('123'),
                 'ativo' => 1
             ]);
 
-            $usuarios = User::orderBy('id', 'asc')->get();
+            //TODO: enviar email de cadastro
 
-            return view('administracao.usuarios.index', ['usuarios' => $usuarios, 'message' => $message]);
+            return redirect()->route('site.usuarios.edit', $user->id)->with(['message' => $message]);
         }
     }
 
@@ -65,15 +65,13 @@ class UsuariosController extends Controller
         $data = $req->all();
         $usuario = User::where('id', $id)->first();
 
-        if (User::where('email', $data['email'])->first()) {
+        if (User::where('email', $data['email'])->first() && $usuario->email != $data['email']) {
             $message = [
                 'type' => 'error',
                 'text' => 'Já existe um usuário cadastrado com este e-mail.'
             ];
-            $cargos = Cargo::all();
 
-
-            return view('administracao.usuarios.edit', ['usuario' => $usuario, 'message' => $message, 'cargos' => $cargos]);
+            return redirect()->route('site.usuarios.edit', $id)->with(['data' => $data, 'message' => $message]);
         } else {
             $message = [
                 'type' => 'success',
@@ -84,9 +82,7 @@ class UsuariosController extends Controller
             $usuario->email = $data['email'];
             $usuario->save();
 
-            $usuarios = User::orderBy('id', 'asc')->get();
-
-            return view('administracao.usuarios.index', ['usuarios' => $usuarios, 'message' => $message]);
+            return redirect()->route('site.usuarios')->with(['message' => $message]);
         }
     }
 
@@ -102,10 +98,6 @@ class UsuariosController extends Controller
                 'type' => 'success',
                 'text' => 'Usuário desativado com sucesso.'
             ];
-
-            $usuarios = User::orderBy('id', 'asc')->get();
-
-            return view('administracao.usuarios.index', ['usuarios' => $usuarios, 'message' => $message]);
         } else {
             $usuario->ativo = 1;
             $usuario->save();
@@ -114,11 +106,9 @@ class UsuariosController extends Controller
                 'type' => 'success',
                 'text' => 'Usuário ativado com sucesso.'
             ];
-
-            $usuarios = User::orderBy('id', 'asc')->get();
-
-            return view('administracao.usuarios.index', ['usuarios' => $usuarios, 'message' => $message]);
         }
+
+        return redirect()->route('site.usuarios')->with(['message' => $message]);
     }
 
     public function changePermission(Request $req, $id)
