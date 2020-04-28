@@ -55,4 +55,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pacientes/criar', ['as' => 'site.pacientes.create', 'uses' => 'Pacientes\PacientesController@create']);
     Route::post('/pacientes/criar', ['as' => 'site.pacientes.insert', 'uses' => 'Pacientes\PacientesController@insert']);
 
+    //FIXME: rotas de post nao podem retornar view
+
 });

@@ -26,7 +26,6 @@ class PacientesController extends Controller
 
     public function insert(Request $req) {
         $data = $req->all();
-
         
         $cliente_cpf = explode(' | ', $data['proprietario'])[0];
         
