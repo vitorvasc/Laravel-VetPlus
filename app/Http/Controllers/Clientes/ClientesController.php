@@ -9,18 +9,20 @@ use App\Models\Cliente\Endereco;
 use App\Models\Cliente\Telefone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ClientesController extends Controller
 {
     public function index()
     {
         $clientes = Cliente::orderBy('id', 'asc')->get();
-        
-            
+
+
         return view('clientes.index', ['clientes' => $clientes]);
     }
 
-    public function view($id) {
+    public function view($id)
+    {
         $cliente = Cliente::where('id', $id)->first();
         return view('clientes.view', ['cliente' => $cliente]);
     }
@@ -76,6 +78,15 @@ class ClientesController extends Controller
                 'whatsapp' => (int) $data['whatsapp'],
             ]);
 
+            $to_name = $data['nome'];
+            $to_email = $data['email'];
+            $data = array('name' => env('APP_NAME'), 'body' => 'Você foi cadastrado no sistema!');
+
+            Mail::send('_layout.emails.emails', $data, function ($message) use ($to_name, $to_email) {
+                $message->to($to_email, $to_name)->subject('Você foi cadastrado no sistema.');
+                $message->from('contato@vitorvasconcellos.com.br', 'Test Mail');
+            });
+
             $clientes = Cliente::orderBy('id', 'asc')->get();
             return view('clientes.index', ['clientes' => $clientes, 'message' => $message]);
         }
@@ -86,5 +97,69 @@ class ClientesController extends Controller
         $cliente = Cliente::where('id', $id)->first();
 
         return view('clientes.edit', ['cliente' => $cliente]);
+    }
+
+    public function editValidate($id, Request $req)
+    {
+        $data = $req->all();
+
+        switch ($data['form-type']) {
+            case 'dados-pessoais':
+
+                $cliente = Cliente::where('id', $id)->first();
+
+                $cliente->nome_completo = $data['nome'];
+                $cliente->rg = isset($data['rg']) ? $data['rg'] : '';
+
+                $cliente->save();
+
+                break;
+
+            case 'enderecos':
+                $endereco = Endereco::where('id', $data['endereco_id'])->first();
+
+                $endereco->cep = $data['cep'];
+                $endereco->logradouro = $data['endereco'];
+                $endereco->numero = isset($data['numero']) ? $data['numero'] : '';
+                $endereco->complemento = isset($data['complemento']) ? $data['complemento'] : '';
+                $endereco->bairro = $data['bairro'];
+                $endereco->cidade = $data['cidade'];
+                $endereco->uf = $data['uf'];
+                $endereco->save();
+
+                break;
+
+            case 'contatos':
+                $telefone = Telefone::where('id', $data['telefone_id'])->first();
+
+                $telefone->telefone = $data['telefone'];
+                $telefone->whatsapp = (int) $data['whatsapp'];
+                $telefone->save();
+
+                $email = Email::where('id', $data['email_id'])->first();
+
+                $email->email = $data['email'];
+                $email->save();
+
+                break;
+
+            default:
+                $message = [
+                    'type' => 'error',
+                    'text' => 'Ocorreu um erro. Por gentileza, informe o administrador do sistema.'
+                ];
+
+                $clientes = Cliente::orderBy('id', 'asc')->get();
+                return view('clientes.index', ['clientes' => $clientes, 'message' => $message]);
+                break;
+        }
+
+        $message = [
+            'type' => 'success',
+            'text' => 'Cliente alterado com sucesso!'
+        ];
+
+        $clientes = Cliente::orderBy('id', 'asc')->get();
+        return view('clientes.index', ['clientes' => $clientes, 'message' => $message]);
     }
 }

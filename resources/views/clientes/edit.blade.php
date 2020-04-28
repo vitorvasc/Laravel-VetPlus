@@ -9,7 +9,6 @@
     @include('_layout.error', ['message' => $message ?? ''])
     @endif
 
-    {{ csrf_field() }}
     <div class="col s12">
         <h5>Alterar cliente: {{$cliente->nome_completo}}</h5>
     </div>
@@ -27,6 +26,9 @@
             action="{{route('site.clientes.edit.validate', $cliente->id)}}">
             <h6>Dados pessoais</h6>
 
+            {{ csrf_field() }}
+            <input type="hidden" name="form-type" id="form-type" value="dados-pessoais">
+
             <div class="input-field col l12">
                 <input id="nome" name="nome" type="text" required class="validate" maxlength="128"
                     value="{{$cliente->nome_completo}}">
@@ -34,7 +36,7 @@
             </div>
 
             <div class="input-field col l6">
-                <input id="cpf" name="cpf" type="text" required class="validate" maxlength="14"
+                <input type="text" disabled class="validate" maxlength="14"
                     value="{{$cliente->cpf}}">
                 <label for="cpf">CPF *</label>
             </div>
@@ -44,7 +46,7 @@
             </div>
 
             <div class="button">
-                <button class="btn-small waves-effect waves-blue light-blue darken-4" type="submit">criar
+                <button class="btn-small waves-effect waves-blue light-blue darken-4" type="submit">alterar
                 </button>
             </div>
 
@@ -55,43 +57,56 @@
         <form class="s12" method="POST" enctype="multipart/form-data"
             action="{{route('site.clientes.edit.validate', $cliente->id)}}">
             <h6>Endereços</h6>
-            
-            //TODO: foreach para endereços
+
+            {{ csrf_field() }}
+            <input type="hidden" name="form-type" id="form-type" value="enderecos">
+
+            @php
+            $endereco = $cliente->enderecos[0];
+            @endphp
+
+            <input type="hidden" name="endereco_id" id="endereco_id" value="{{$endereco->id}}">
 
             <div class="input-field col l2">
-                <input id="cep" name="cep" type="text" required class="validate" maxlength="9">
+                <input id="cep" name="cep" type="text" required class="validate" maxlength="9"
+                    value="{{$endereco->cep}}">
                 <label for="cep">CEP *</label>
             </div>
 
             <div class="input-field col l6">
-                <input id="endereco" name="endereco" type="text" required class="validate" maxlength="255">
+                <input id="endereco" name="endereco" type="text" required class="validate" maxlength="255"
+                    value="{{$endereco->logradouro}}">
                 <label for="endereco">Endereço *</label>
             </div>
 
             <div class="input-field col l2">
-                <input id="numero" name="numero" type="text" required class="validate" maxlength="8">
+                <input id="numero" name="numero" type="text" required class="validate" maxlength="8"
+                    value="{{$endereco->numero}}">
                 <label for="numero">Número *</label>
             </div>
             <div class="input-field col l2">
-                <input id="complemento" name="complemento" type="text" class="validate" maxlength="16">
+                <input id="complemento" name="complemento" type="text" class="validate" maxlength="16"
+                    value="{{$endereco->complemento}}">
                 <label for="complemento">Complemento</label>
             </div>
 
             <div class="input-field col s3">
-                <input id="bairro" name="bairro" type="text" required class="validate" maxlength="255">
+                <input id="bairro" name="bairro" type="text" required class="validate" maxlength="255"
+                    value="{{$endereco->bairro}}">
                 <label for="bairro">Bairro *</label>
             </div>
             <div class="input-field col l7">
-                <input id="cidade" name="cidade" type="text" required class="validate" maxlength="255">
+                <input id="cidade" name="cidade" type="text" required class="validate" maxlength="255"
+                    value="{{$endereco->cidade}}">
                 <label for="cidade">Cidade *</label>
             </div>
             <div class="input-field col s2">
-                <input id="uf" name="uf" type="text" required class="validate" maxlength="2">
+                <input id="uf" name="uf" type="text" required class="validate" maxlength="2" value="{{$endereco->uf}}">
                 <label for="uf">UF *</label>
             </div>
 
             <div class="button">
-                <button class="btn-small waves-effect waves-blue light-blue darken-4" type="submit">criar
+                <button class="btn-small waves-effect waves-blue light-blue darken-4" type="submit">alterar
                 </button>
             </div>
 
@@ -103,11 +118,21 @@
             action="{{route('site.clientes.edit.validate', $cliente->id)}}">
 
             <h6>Contatos</h6>
-            
-            //TODO: foreach para telefones e emails 
+
+            {{ csrf_field() }}
+            <input type="hidden" name="form-type" id="form-type" value="contatos">
+
+            @php
+            $telefone = $cliente->telefones[0];
+            $email = $cliente->emails[0];
+            @endphp
+
+            <input type="hidden" name="telefone_id" id="telefone_id" value="{{$telefone->id}}">
+            <input type="hidden" name="email_id" id="email_id" value="{{$email->id}}">
 
             <div class="input-field col l6">
-                <input id="telefone" name="telefone" type="text" required class="validate" maxlength="16">
+                <input id="telefone" name="telefone" type="text" required class="validate" maxlength="16"
+                    value="{{$telefone->telefone}}">
                 <label for="telefone">Telefone *</label>
             </div>
 
@@ -115,23 +140,26 @@
                 <p>
                     <label for="whatsapp">É WhatsApp?</label>
                     <label>
-                        <input class="with-gap" id="whatsapp" name="whatsapp" type="radio" value="1" />
+                        <input class="with-gap" id="whatsapp" name="whatsapp" type="radio" value="1"
+                            @if($telefone->whatsapp) checked @endif />
                         <span>Sim</span>
                     </label>
                     <label>
-                        <input class="with-gap" id="whatsapp" name="whatsapp" type="radio" value="0" />
+                        <input class="with-gap" id="whatsapp" name="whatsapp" type="radio" value="0"
+                            @if(!$telefone->whatsapp) checked @endif />
                         <span>Não</span>
                     </label>
                 </p>
             </div>
 
             <div class="input-field col l12">
-                <input id="email" name="email" type="email" required class="validate" maxlength="128">
+                <input id="email" name="email" type="email" required class="validate" maxlength="128"
+                    value="{{$email->email}}">
                 <label for="email">Email *</label>
             </div>
 
             <div class="button">
-                <button class="btn-small waves-effect waves-blue light-blue darken-4" type="submit">criar
+                <button class="btn-small waves-effect waves-blue light-blue darken-4" type="submit">alterar
                 </button>
             </div>
 
@@ -187,6 +215,7 @@
                     $('#bairro').prop("disabled", false);
                     $('#cidade').prop("disabled", false);
                     $('#uf').prop("disabled", false);
+                    M.updateTextFields();
                 });
             }
         }

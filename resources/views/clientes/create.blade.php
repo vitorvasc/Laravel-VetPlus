@@ -5,104 +5,109 @@
 @section('conteudo')
 
 <div class="row content list">
-    <form class="col s12" method="POST" enctype="multipart/form-data"
-        action="{{route('site.clientes.insert')}}">
+    <form class="col s12" method="POST" enctype="multipart/form-data" action="{{route('site.clientes.insert')}}">
 
         @if ($message ?? '')
         @include('_layout.error', ['message' => $message ?? ''])
         @endif
 
         {{ csrf_field() }}
-        <div class="row">
-            <h5>Cadastrar novo cliente</h5>
-        </div>
 
-        <div class="row">
-            <h6>Dados pessoais</h6>
+        <div class="col s12">
 
-            <div class="input-field col l12">
-                <input id="nome" name="nome" type="text" required class="validate" maxlength="128">
-                <label for="nome">Nome completo *</label>
+
+            <div class="row">
+                <h5>Cadastrar novo cliente</h5>
             </div>
 
-            <div class="input-field col l6">
-                <input id="cpf" name="cpf" type="text" required class="validate" maxlength="14">
-                <label for="cpf">CPF *</label>
-            </div>
-            <div class="input-field col l6">
-                <input id="rg" name="rg" type="text" class="validate" maxlength="16">
-                <label for="rg">RG</label>
-            </div>
-        </div>
+            <div class="row">
+                <h6>Dados pessoais</h6>
 
-        <div class="row">
-            <h6>Endereço</h6>
+                <div class="input-field col l12">
+                    <input id="nome" name="nome" type="text" required class="validate" maxlength="128">
+                    <label for="nome">Nome completo *</label>
+                </div>
 
-            <div class="input-field col l2">
-                <input id="cep" name="cep" type="text" required class="validate" maxlength="9">
-                <label for="cep">CEP *</label>
-            </div>
-
-            <div class="input-field col l6">
-                <input id="endereco" name="endereco" type="text" required class="validate" maxlength="255">
-                <label for="endereco">Endereço *</label>
+                <div class="input-field col l6">
+                    <input id="cpf" name="cpf" type="text" required class="validate" maxlength="14">
+                    <label for="cpf">CPF *</label>
+                </div>
+                <div class="input-field col l6">
+                    <input id="rg" name="rg" type="text" class="validate" maxlength="16">
+                    <label for="rg">RG</label>
+                </div>
             </div>
 
-            <div class="input-field col l2">
-                <input id="numero" name="numero" type="text" required class="validate" maxlength="8">
-                <label for="numero">Número *</label>
-            </div>
-            <div class="input-field col l2">
-                <input id="complemento" name="complemento" type="text" class="validate" maxlength="16">
-                <label for="complemento">Complemento</label>
+            <div class="row">
+                <h6>Endereço</h6>
+
+                <div class="input-field col l2">
+                    <input id="cep" name="cep" type="text" required class="validate" maxlength="9">
+                    <label for="cep">CEP *</label>
+                </div>
+
+                <div class="input-field col l6">
+                    <input id="endereco" name="endereco" type="text" required class="validate" maxlength="255">
+                    <label for="endereco">Endereço *</label>
+                </div>
+
+                <div class="input-field col l2">
+                    <input id="numero" name="numero" type="text" required class="validate" maxlength="8">
+                    <label for="numero">Número *</label>
+                </div>
+                <div class="input-field col l2">
+                    <input id="complemento" name="complemento" type="text" class="validate" maxlength="16">
+                    <label for="complemento">Complemento</label>
+                </div>
+
+                <div class="input-field col s3">
+                    <input id="bairro" name="bairro" type="text" required class="validate" maxlength="255">
+                    <label for="bairro">Bairro *</label>
+                </div>
+                <div class="input-field col l7">
+                    <input id="cidade" name="cidade" type="text" required class="validate" maxlength="255">
+                    <label for="cidade">Cidade *</label>
+                </div>
+                <div class="input-field col s2">
+                    <input id="uf" name="uf" type="text" required class="validate" maxlength="2">
+                    <label for="uf">UF *</label>
+                </div>
             </div>
 
-            <div class="input-field col s3">
-                <input id="bairro" name="bairro" type="text" required class="validate" maxlength="255">
-                <label for="bairro">Bairro *</label>
-            </div>
-            <div class="input-field col l7">
-                <input id="cidade" name="cidade" type="text" required class="validate" maxlength="255">
-                <label for="cidade">Cidade *</label>
-            </div>
-            <div class="input-field col s2">
-                <input id="uf" name="uf" type="text" required class="validate" maxlength="2">
-                <label for="uf">UF *</label>
-            </div>
-        </div>
+            <div class="row">
+                <h6>Contatos</h6>
 
-        <div class="row">
-            <h6>Contatos</h6>
+                <div class="input-field col l6">
+                    <input id="telefone" name="telefone" type="text" required class="validate" maxlength="16">
+                    <label for="telefone">Telefone *</label>
+                </div>
 
-            <div class="input-field col l6">
-                <input id="telefone" name="telefone" type="text" required class="validate" maxlength="16">
-                <label for="telefone">Telefone *</label>
-            </div>
+                <div class="col l6" style="margin-top: 1rem; margin-bottom: 1rem;">
+                    <p>
+                        <label for="whatsapp">É WhatsApp?</label>
+                        <label>
+                            <input class="with-gap" id="whatsapp" name="whatsapp" type="radio" value="1" />
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" id="whatsapp" name="whatsapp" type="radio" value="0" />
+                            <span>Não</span>
+                        </label>
+                    </p>
+                </div>
 
-            <div class="col l6" style="margin-top: 1rem; margin-bottom: 1rem;">
-                <p>
-                    <label for="whatsapp">É WhatsApp?</label>
-                    <label>
-                        <input class="with-gap" id="whatsapp" name="whatsapp" type="radio" value="1" />
-                        <span>Sim</span>
-                    </label>
-                    <label>
-                        <input class="with-gap" id="whatsapp" name="whatsapp" type="radio" value="0" />
-                        <span>Não</span>
-                    </label>
-                </p>
+                <div class="input-field col l12">
+                    <input id="email" name="email" type="email" required class="validate" maxlength="128">
+                    <label for="email">Email *</label>
+                </div>
             </div>
 
-            <div class="input-field col l12">
-                <input id="email" name="email" type="email" required class="validate" maxlength="128">
-                <label for="email">Email *</label>
+
+            <div class="button">
+                <button class="btn-small waves-effect waves-blue light-blue darken-4" type="submit">criar
+                </button>
             </div>
-        </div>
 
-
-        <div class="button">
-            <button class="btn-small waves-effect waves-blue light-blue darken-4" type="submit">criar
-            </button>
         </div>
     </form>
 </div>
