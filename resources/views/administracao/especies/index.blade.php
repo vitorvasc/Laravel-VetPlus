@@ -13,10 +13,10 @@
                     class="material-icons right tiny">add_circle_outline</i>inserir espécie</a>
         </div>
     
-        @if ($message ?? '')
-        @include('_layout.error', ['message' => $message ?? ''])
+        @if (isset($message) || session('message'))
+        @include('_layout.error', ['message' => isset($message) ? $message :  session('message')])
         @endif
-
+        
         <table id="especies" class="centered striped responsive-table">
             <thead>
                 <tr>

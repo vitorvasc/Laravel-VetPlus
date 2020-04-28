@@ -7,8 +7,8 @@
 <div class="row content list">
     <form class="col s12" method="POST" enctype="multipart/form-data" action="{{route('site.especies.insert')}}">
 
-        @if ($message ?? '')
-        @include('_layout.error', ['message' => $message ?? ''])
+        @if (isset($message) || session('message'))
+        @include('_layout.error', ['message' => isset($message) ? $message : session('message')])
         @endif
 
         {{ csrf_field() }}
@@ -19,7 +19,8 @@
             </div>
 
             <div class="input-field col s12">
-                <input id="nome" name="nome" type="text" required class="validate" maxlength="64">
+                <input id="nome" name="nome" type="text" required class="validate" maxlength="64" @if(session('data'))
+                    value="{{session('data')['nome']}}" @endif>
                 <label for="nome">Nome da espécie</label>
             </div>
 

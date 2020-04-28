@@ -8,8 +8,8 @@
     <form class="col s12" method="POST" enctype="multipart/form-data"
         action="{{route('site.especies.edit.validate', $especie->id)}}">
 
-        @if ($message ?? '')
-        @include('_layout.error', ['message' => $message ?? ''])
+        @if (isset($message) || session('message'))
+        @include('_layout.error', ['message' => isset($message) ? $message : session('message')])
         @endif
 
         {{ csrf_field() }}
@@ -21,8 +21,8 @@
             </div>
 
             <div class="input-field col s12">
-                <input id="nome" name="nome" type="text" required class="validate" value="{{$especie->nome}}"
-                    maxlength="64">
+                <input id="nome" name="nome" type="text" required class="validate" @if(session('data'))
+                    value="{{session('data')['nome']}}" @else value="{{$especie->nome}}" @endif maxlength="64">
                 <label for="nome">Nome da espécie</label>
             </div>
 

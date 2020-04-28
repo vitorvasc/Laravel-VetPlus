@@ -29,7 +29,7 @@ class EspeciesController extends Controller
                 'text' => 'Já existe uma espécie com este nome.'
             ];
 
-            return view('administracao.especies.create', ['message' => $message]);
+            return redirect()->route('site.especies.create')->with(['data' => $data, 'message' => $message]);
         } else {
             $message = [
                 'type' => 'success',
@@ -40,9 +40,7 @@ class EspeciesController extends Controller
                 'nome' => $data['nome'],
             ]);
 
-            $especies = Especie::orderBy('nome', 'asc')->get();
-
-            return view('administracao.especies.index', ['especies' => $especies, 'message' => $message]);
+            return redirect()->route('site.especies')->with(['message' => $message]);
         }
     }
 
@@ -63,7 +61,7 @@ class EspeciesController extends Controller
                 'text' => 'Já existe uma espécie com este nome.'
             ];
 
-            return view('administracao.especies.edit', ['especie' => $especie, 'message' => $message]);
+            return redirect()->route('site.especies.edit', $id)->with(['data' => $data, 'message' => $message]);
         } else {
             $message = [
                 'type' => 'success',
@@ -73,9 +71,7 @@ class EspeciesController extends Controller
             $especie->nome = $data['nome'];
             $especie->save();
 
-            $especies = Especie::orderBy('nome', 'asc')->get();
-
-            return view('administracao.especies.index', ['especies' => $especies, 'message' => $message]);
+            return redirect()->route('site.especies')->with(['message' => $message]);
         }
     }
 }
