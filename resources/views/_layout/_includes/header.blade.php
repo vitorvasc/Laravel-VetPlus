@@ -49,6 +49,10 @@
                         <a href="{{route('site.clientes')}}">Clientes</a>
                     </li>
 
+                    <li @if(Route::current()->getName() == 'site.pacientes') class="active" @endif>
+                        <a href="{{route('site.pacientes')}}">Pacientes</a>
+                    </li>
+
                     @if (@Auth::user()->isAdmin())
                     <li>
                         <a class="dropdown-trigger" href="#!" data-target="dropdown-admin">Administração<i
@@ -72,6 +76,10 @@
 
             <li @if(Route::current()->getName() == 'site.clientes') class="active" @endif>
                 <a href="{{route('site.clientes')}}">Clientes</a>
+            </li>
+
+            <li @if(Route::current()->getName() == 'site.pacientes') class="active" @endif>
+                <a href="{{route('site.pacientes')}}">Pacientes</a>
             </li>
 
             @if (@Auth::user()->isAdmin())

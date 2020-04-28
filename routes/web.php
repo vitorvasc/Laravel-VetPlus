@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/racas/criar', ['as' => 'site.racas.insert', 'uses' => 'Racas\RacasController@insert']);
     Route::get('/racas/editar/{id}', ['as' => 'site.racas.edit', 'uses' => 'Racas\RacasController@edit']);
     Route::post('/racas/editar/{id}', ['as' => 'site.racas.edit.validate', 'uses' => 'Racas\RacasController@editValidate']);
+    Route::get('/racas/listar-por-especie/{especie_id}', ['as' => 'site.racas.list', 'uses' => 'Racas\RacasController@listarPorEspecie']);
 
     Route::get('/usuarios', ['as' => 'site.usuarios', 'uses' => 'Usuarios\UsuariosController@index']);
     Route::get('/usuarios/criar', ['as' => 'site.usuarios.create', 'uses' => 'Usuarios\UsuariosController@create']);
@@ -49,5 +50,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/clientes/{id}', ['as' => 'site.clientes.view', 'uses' => 'Clientes\ClientesController@view']);
     Route::get('/clientes/editar/{id}', ['as' => 'site.clientes.edit', 'uses' => 'Clientes\ClientesController@edit']);
     Route::post('/clientes/editar/{id}', ['as' => 'site.clientes.edit.validate', 'uses' => 'Clientes\ClientesController@editValidate']);
+
+    Route::get('/pacientes', ['as' => 'site.pacientes', 'uses' => 'Pacientes\PacientesController@index']);
+    Route::get('/pacientes/criar', ['as' => 'site.pacientes.create', 'uses' => 'Pacientes\PacientesController@create']);
+    Route::post('/pacientes/criar', ['as' => 'site.pacientes.insert', 'uses' => 'Pacientes\PacientesController@insert']);
 
 });

@@ -88,4 +88,10 @@ class RacasController extends Controller
             return view('administracao.racas.index', ['racas' => $racas, 'message' => $message]);
         }
     }
+
+    public function listarPorEspecie($especie_id) {
+        $racas = Raca::where('especie_id', $especie_id)->orderBy('nome', 'asc')->get();
+
+        return response($racas);
+    }
 }

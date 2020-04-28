@@ -96,8 +96,8 @@
                         "type": 'add',
                         "cargo_id": permissionID,
                     },
-                    success: function() {
-                        M.toast({html: 'Permissão adicionada com sucesso.'});
+                    success: function(res) {
+                        M.toast({html: res.message});
                     }
                 });
             },
@@ -111,8 +111,8 @@
                         "type": 'delete',
                         "cargo_id": permissionID,
                     },
-                    success: function() {
-                        M.toast({html: 'Permissão removida com sucesso.'});
+                    success: function(res) {
+                        M.toast({html: res.message});
                     }
                 });
             }

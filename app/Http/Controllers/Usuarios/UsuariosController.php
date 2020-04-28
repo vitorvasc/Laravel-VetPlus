@@ -121,30 +121,29 @@ class UsuariosController extends Controller
         }
     }
 
-    public function changePermission(Request $req, $id) {
+    public function changePermission(Request $req, $id)
+    {
         $data = $req->all();
 
-        if($data['type'] == 'add') {
+        if ($data['type'] == 'add') {
             Permissao::create([
                 'usuario_id' => $id,
                 'cargo_id' => (int) $data['cargo_id'],
             ]);
 
-            return response()->json(['sucess' => 'Permissão adicionada com sucesso.']);
-
-        } else if($data['type'] == 'delete') {
+            return response()->json(['status' => 'sucess', 'message' => 'Permissão adicionada com sucesso.']);
+        } else if ($data['type'] == 'delete') {
             $permissao = Permissao::where('usuario_id', $id)->where('cargo_id', $data['cargo_id']);
-            
-            if($permissao) {
+
+            if ($permissao) {
                 $permissao->delete();
 
-                return response()->json(['success' => 'Permissão removida com sucesso.']);
+                return response()->json(['status' => 'success', 'message' => 'Permissão removida com sucesso.']);
             } else {
-                return response()->json(['error' => 'Ocorreu um erro. 1']);
+                return response()->json(['status' => 'error', 'message' => 'Ocorreu um erro. 1']);
             }
-
         } else {
-            return response()->json(['error' => 'Ocorreu um erro. 2']);
+            return response()->json(['status' => 'error', 'message' => 'Ocorreu um erro. 2']);
         }
     }
 }
