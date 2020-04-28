@@ -27,14 +27,12 @@ class RacasController extends Controller
         $data = $req->all();
 
         if(Raca::where('nome', $data['nome'])->where('especie_id', (int) $data['especie'])->first()) {
-            $especies = Especie::orderBy('nome', 'asc')->get();
-
             $message = [
                 'type' => 'error',
                 'text' => 'Já existe uma raça com este nome para esta espécie.'
             ];
 
-            return view('administracao.racas.create', ['especies' => $especies, 'message' => $message]);
+            return redirect()->route('site.racas.create')->with(['data' => $data,'message' => $message]);
         } else {
             $message = [
                 'type' => 'success',
@@ -45,10 +43,8 @@ class RacasController extends Controller
                 'nome' => $data['nome'],
                 'especie_id' => (int) $data['especie'],
             ]);
-            
-            $racas = Raca::orderBy('nome', 'asc')->get();
 
-            return view('administracao.racas.index', ['racas' => $racas, 'message' => $message]);
+            return redirect()->route('site.racas')->with(['message' => $message]);
         }
     }
 
@@ -65,14 +61,12 @@ class RacasController extends Controller
         $raca = Raca::where('id', $id)->first();
 
         if(Raca::where('nome', $data['nome'])->where('especie_id', $data['especie'])->first()) {
-            $especies = Especie::orderBy('nome', 'asc')->get();
-
             $message = [
                 'type' => 'error',
                 'text' => 'Já existe uma raça com este nome para esta espécie.'
             ];
 
-            return view('administracao.racas.edit', ['especies' => $especies, 'raca' => $raca, 'message' => $message]);
+            return redirect()->route('site.racas.edit', $id)->with(['data' => $data,'message' => $message]);
         } else {
             $message = [
                 'type' => 'success',
@@ -83,9 +77,7 @@ class RacasController extends Controller
             $raca->especie_id = (int) $data['especie'];
             $raca->save();
 
-            $racas = Raca::orderBy('nome', 'asc')->get();
-
-            return view('administracao.racas.index', ['racas' => $racas, 'message' => $message]);
+            return redirect()->route('site.racas')->with(['message' => $message]);
         }
     }
 

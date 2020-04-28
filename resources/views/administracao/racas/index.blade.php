@@ -13,8 +13,8 @@
                     class="material-icons right tiny">add_circle_outline</i>inserir raça</a>
         </div>
 
-        @if ($message ?? '')
-        @include('_layout.error', ['message' => $message ?? ''])
+        @if (isset($message) || session('message'))
+        @include('_layout.error', ['message' => isset($message) ? $message :  session('message')])
         @endif
 
         <table id="racas" class="centered striped responsive-table">

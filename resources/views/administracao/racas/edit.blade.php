@@ -8,8 +8,8 @@
     <form class="col s12" method="POST" enctype="multipart/form-data"
         action="{{route('site.racas.edit.validate', $raca->id)}}">
 
-        @if ($message ?? '')
-        @include('_layout.error', ['message' => $message ?? ''])
+        @if (isset($message) || session('message'))
+        @include('_layout.error', ['message' => isset($message) ? $message : session('message')])
         @endif
 
         {{ csrf_field() }}
@@ -23,7 +23,9 @@
                 <select name="especie" id="especie" required>
                     <option value="" disabled selected>Escolha</option>
                     @foreach ($especies as $especie)
-                    <option value="{{$especie->id}}" @if($especie->id == $raca->especie_id) selected
+                    <option value="{{$especie->id}}" @if (session('data') && session('data')['especie']==$especie->id)
+                        selected
+                        @elseif ($especie->id == $raca->especie_id) selected
                         @endif>{{$especie->nome}}</option>
                     @endforeach
                 </select>
@@ -31,8 +33,8 @@
             </div>
 
             <div class="input-field col s12">
-                <input id="nome" name="nome" type="text" required class="validate" value="{{$raca->nome}}"
-                    maxlength="64">
+                <input id="nome" name="nome" type="text" required class="validate" @if (session('data'))
+                    value="{{session('data')['nome']}}" @else value="{{$raca->nome}}" @endif maxlength="64">
                 <label for="nome">Nome da raça</label>
             </div>
 
