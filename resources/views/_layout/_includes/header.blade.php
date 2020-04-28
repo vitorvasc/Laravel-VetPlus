@@ -70,6 +70,10 @@
                 <a href="{{route('site.login')}}">Início</a>
             </li>
 
+            <li @if(Route::current()->getName() == 'site.clientes') class="active" @endif>
+                <a href="{{route('site.clientes')}}">Clientes</a>
+            </li>
+
             @if (@Auth::user()->isAdmin())
             <div class="divider"></div>
 
