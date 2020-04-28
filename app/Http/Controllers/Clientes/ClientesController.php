@@ -78,14 +78,15 @@ class ClientesController extends Controller
                 'whatsapp' => (int) $data['whatsapp'],
             ]);
 
-            $to_name = $data['nome'];
-            $to_email = $data['email'];
-            $data = array('name' => env('APP_NAME'), 'body' => 'Você foi cadastrado no sistema!');
+            //TODO: email de cadastro de um cliente.
+            // $to_name = $data['nome'];
+            // $to_email = $data['email'];
+            // $data = array('name' => env('APP_NAME'), 'body' => 'Você foi cadastrado no sistema!');
 
-            Mail::send('_layout.emails.emails', $data, function ($message) use ($to_name, $to_email) {
-                $message->to($to_email, $to_name)->subject('Você foi cadastrado no sistema.');
-                $message->from('contato@vitorvasconcellos.com.br', 'Test Mail');
-            });
+            // Mail::send('_layout.emails.emails', $data, function ($message) use ($to_name, $to_email) {
+            //     $message->to($to_email, $to_name)->subject('Você foi cadastrado no sistema.');
+            //     $message->from('contato@vitorvasconcellos.com.br', 'Test Mail');
+            // });
 
             $clientes = Cliente::orderBy('id', 'asc')->get();
             return view('clientes.index', ['clientes' => $clientes, 'message' => $message]);
