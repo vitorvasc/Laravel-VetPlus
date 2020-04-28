@@ -32,12 +32,12 @@
                 @foreach ($pacientes as $paciente)
                 <tr>
                     <td>{{$paciente->nome}}</td>
-                    <td>{{$paciente->especie->nome}}</td>
+                    <td>{{$paciente->raca->especie->nome}}</td>
                     <td>{{$paciente->raca->nome}}</td>
-                    <td><a href="{{route('site.clientes.view', $paciente->cliente->id)}}"></a> {{$paciente->cliente->nome_completo}}</td>
+                    <td><a href="{{route('site.clientes.view', $paciente->cliente->id)}}">{{$paciente->cliente->nome_completo}}</a></td>
                     <td>
-                        <a href="{{route('site.pacientes.view', $paciente->id)}}"><i class="material-icons">person</i></a>
-                        <a href="{{route('site.pacientes.edit', $paciente->id)}}"><i class="material-icons">edit</i></a>
+                        <a href="{{route('site.clientes.view', $paciente->id)}}"><i class="material-icons">person</i></a>
+                        <a href="{{route('site.clientes.edit', $paciente->id)}}"><i class="material-icons">edit</i></a>
                     </td>
                 </tr>
                 @endforeach

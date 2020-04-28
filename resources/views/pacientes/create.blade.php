@@ -34,14 +34,14 @@
                         <option value="{{$especie->id}}">{{$especie->nome}}</option>
                         @endforeach
                     </select>
-                    <label for="especie">Espécie</label>
+                    <label for="especie">Espécie *</label>
                 </div>
 
                 <div class="input-field col s12 l4">
                     <select class="raca" name="raca" id="raca" required disabled>
                         <option value="" disabled selected>Escolha</option>
                     </select>
-                    <label for="especie">Raça</label>
+                    <label for="especie">Raça *</label>
                 </div>
 
                 <div class="input-field col s12 l4">
@@ -50,7 +50,7 @@
                         <option value="F">Fêmea</option>
                         <option value="M">Macho</option>
                     </select>
-                    <label for="especie">Sexo</label>
+                    <label for="especie">Sexo *</label>
                 </div>
 
                 <div class="input-field col s12 l4">
@@ -60,13 +60,31 @@
                         <option value="M">Médio</option>
                         <option value="G">Grande</option>
                     </select>
-                    <label for="especie">Porte</label>
+                    <label for="especie">Porte *</label>
                 </div>
 
                 <div class="input-field col s12 l4">
                     <input id="cor" name="cor" type="text" required class="validate" maxlength="32">
                     <label for="cor">Cor *</label>
                 </div>
+            </div>
+
+            <div class="row">
+                <h6>Proprietário</h6>
+
+                <div class="input-field col s12">
+                    <input type="text" id="proprietario" name="proprietario" class="autocomplete">
+                    <label for="proprietario">Digite o CPF ou nome...</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <h6>Observações</h6>
+
+                <div class="input-field col s12">
+                    <textarea id="observacoes" name="observacoes" class="materialize-textarea" maxlength="4096"></textarea>
+                    <label for="observacoes">Observações</label>
+                  </div>
             </div>
 
             <div class="button">
@@ -89,6 +107,14 @@
         $('select.sexo').formSelect();
 
         $('select.porte').formSelect();
+
+        $('input#proprietario').autocomplete({
+            data: {
+                @foreach($clientes as $cliente) 
+                '{{$cliente->cpf}} | {{$cliente->nome_completo}}': null,
+                @endforeach
+            },
+        });
 
 
         $('select.especie').change(function () {

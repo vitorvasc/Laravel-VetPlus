@@ -13,10 +13,24 @@ class Paciente extends Model
     protected $fillable = [
         'nome',
         'data_cadastro',
-        'especie_id',
+        'raca_id',
+        'cliente_id',
         'cadastrado_por',
         'sexo',
         'cor',
         'porte',
     ];
+    
+    protected $with = [
+        'raca',
+        'cliente',
+    ];
+
+    public function raca() {
+        return $this->hasOne(\App\Models\Raca::class, 'id', 'raca_id');
+    }
+    
+    public function cliente() {
+        return $this->hasOne(\App\Models\Cliente\Cliente::class, 'id', 'cliente_id');
+    }
 }
