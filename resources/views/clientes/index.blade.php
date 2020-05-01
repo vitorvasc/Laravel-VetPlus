@@ -13,8 +13,8 @@
                     class="material-icons right tiny">add_circle_outline</i>Novo cliente</a>
         </div>
 
-        @if ($message ?? '')
-        @include('_layout.error', ['message' => $message ?? ''])
+        @if (isset($message) || session('message'))
+        @include('_layout.error', ['message' => isset($message) ? $message :  session('message')])
         @endif
 
         <table id="clientes" class="centered striped responsive-table">

@@ -42,7 +42,7 @@ class ClientesController extends Controller
                 'text' => 'Já existe um usuário cadastrado com este CPF.'
             ];
 
-            return view('clientes.create', ['message' => $message]);
+            return redirect()->route('site.clientes.create')->with(['message' => $message, 'data' => $data]);
         } else {
             $message = [
                 'type' => 'success',
@@ -88,8 +88,7 @@ class ClientesController extends Controller
             //     $message->from('contato@vitorvasconcellos.com.br', 'Test Mail');
             // });
 
-            $clientes = Cliente::orderBy('id', 'asc')->get();
-            return view('clientes.index', ['clientes' => $clientes, 'message' => $message]);
+            return redirect()->route('site.clientes')->with(['message' => $message]);
         }
     }
 
@@ -150,8 +149,7 @@ class ClientesController extends Controller
                     'text' => 'Ocorreu um erro. Por gentileza, informe o administrador do sistema.'
                 ];
 
-                $clientes = Cliente::orderBy('id', 'asc')->get();
-                return view('clientes.index', ['clientes' => $clientes, 'message' => $message]);
+                return redirect()->route('site.clientes')->with(['message' => $message]);
                 break;
         }
 
@@ -160,7 +158,6 @@ class ClientesController extends Controller
             'text' => 'Cliente alterado com sucesso!'
         ];
 
-        $clientes = Cliente::orderBy('id', 'asc')->get();
-        return view('clientes.index', ['clientes' => $clientes, 'message' => $message]);
+        return redirect()->route('site.clientes')->with(['message' => $message]);
     }
 }
