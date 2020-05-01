@@ -9,8 +9,8 @@
         <div class="row box-title">
             <h3>{{@env('APP_NAME')}}</h3>
         </div>
-        @if ($message ?? '')
-        @include('_layout.error', ['message' => $message ?? ''])
+        @if (isset($message) || session('message'))
+        @include('_layout.error', ['message' => isset($message) ? $message :  session('message')])
         @endif
 
         <div class="row form-login">
