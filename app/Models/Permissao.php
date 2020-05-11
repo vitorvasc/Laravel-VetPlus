@@ -15,10 +15,6 @@ class Permissao extends Model
 
     public $timestamps = false;
 
-    protected $with = [
-        'cargo',
-    ];
-
     public function cargo() {
         return $this->belongsTo(\App\Models\Cargo::class, 'cargo_id');
     }

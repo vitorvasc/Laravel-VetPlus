@@ -20,17 +20,12 @@ class Paciente extends Model
         'cor',
         'porte',
     ];
-    
-    protected $with = [
-        'raca',
-        'cliente',
-    ];
 
     public function raca() {
         return $this->hasOne(\App\Models\Raca::class, 'id', 'raca_id');
     }
     
     public function cliente() {
-        return $this->hasOne(\App\Models\Cliente\Cliente::class, 'id', 'cliente_id');
+        return $this->belongsTo(\App\Models\Cliente\Cliente::class, 'cliente_id');
     }
 }

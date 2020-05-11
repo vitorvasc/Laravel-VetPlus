@@ -7,7 +7,7 @@
 <div class="row content list">
 
     @if (isset($message) || session('message'))
-    @include('_layout.error', ['message' => isset($message) ? $message :  session('message')])
+    @include('_layout.error', ['message' => isset($message) ? $message : session('message')])
     @endif
 
     {{ csrf_field() }}
@@ -105,10 +105,10 @@
                         target="_blank">{{$cliente->whatsapp->telefone}}</a>
                 </div>
                 @else
-    
+
                 @endif
                 @endforeach
-    
+
                 @foreach ($cliente->emails as $email)
                 <div class="input-field col l12">
                     <strong>Email:</strong> {{$email->email}}
@@ -120,6 +120,16 @@
 
     <div id="animais" class="col s12">
         <h6>Animais</h6>
+
+        @if (!count($cliente->animais))
+        <p style="margin-left: 5px; margin-top: 20px;"><strong>O cliente não possui nenhum animal cadastrado!</strong></p>
+        @else
+        <div class="collection" style="margin-top: 20px">
+            @foreach ($cliente->animais as $animal)
+            <a href="{{route('site.pacientes.view', $animal->id)}}" class="collection-item">{{$animal->nome}}</a>
+            @endforeach
+        </div>
+        @endif
     </div>
 </div>
 

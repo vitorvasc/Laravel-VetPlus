@@ -18,12 +18,6 @@ class Cliente extends Model
         'cadastrado_por',
     ];
 
-    protected $with = [
-        'emails',
-        'whatsapp',
-        'telefones',
-    ];
-
     public function cadastradoPor()
     {
         return $this->hasOne(\App\Models\User::class, 'cadastrado_por', 'id');
@@ -45,5 +39,9 @@ class Cliente extends Model
         return $this->hasOne(\App\Models\Cliente\Telefone::class, 'cliente_id', 'id')->where(function ($query) {
             $query->where('whatsapp', 1);
         });
+    }
+
+    public function animais() {
+        return $this->hasMany(\App\Models\Paciente::class, 'cliente_id', 'id');
     }
 }
