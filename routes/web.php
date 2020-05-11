@@ -54,6 +54,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pacientes', ['as' => 'site.pacientes', 'uses' => 'Pacientes\PacientesController@index']);
     Route::get('/pacientes/criar', ['as' => 'site.pacientes.create', 'uses' => 'Pacientes\PacientesController@create']);
     Route::post('/pacientes/criar', ['as' => 'site.pacientes.insert', 'uses' => 'Pacientes\PacientesController@insert']);
+    Route::get('/pacientes/{id}', ['as' => 'site.pacientes.view', 'uses' => 'Pacientes\PacientesController@view']);
+    Route::get('/pacientes/editar/{id}', ['as' => 'site.pacientes.edit', 'uses' => 'Pacientes\PacientesController@edit']);
 
     //FIXME: rotas de post nao podem retornar view
 

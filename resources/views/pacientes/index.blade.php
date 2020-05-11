@@ -13,11 +13,11 @@
                     class="material-icons right tiny">add_circle_outline</i>Novo paciente</a>
         </div>
 
-        @if ($message ?? '')
-        @include('_layout.error', ['message' => $message ?? ''])
+        @if (isset($message) || session('message'))
+        @include('_layout.error', ['message' => isset($message) ? $message :  session('message')])
         @endif
 
-        <table id="pacientes" class="centered striped responsive-table">
+        <table id="pacientes" class="striped responsive-table">
             <thead>
                 <tr>
                     <th>Nome</th>
@@ -36,8 +36,8 @@
                     <td>{{$paciente->raca->nome}}</td>
                     <td><a href="{{route('site.clientes.view', $paciente->cliente->id)}}">{{$paciente->cliente->nome_completo}}</a></td>
                     <td>
-                        <a href="{{route('site.clientes.view', $paciente->id)}}"><i class="material-icons">person</i></a>
-                        <a href="{{route('site.clientes.edit', $paciente->id)}}"><i class="material-icons">edit</i></a>
+                        <a href="{{route('site.pacientes.view', $paciente->id)}}"><i class="material-icons">person</i></a>
+                        <a href="{{route('site.pacientes.edit', $paciente->id)}}"><i class="material-icons">edit</i></a>
                     </td>
                 </tr>
                 @endforeach

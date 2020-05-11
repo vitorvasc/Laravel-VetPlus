@@ -17,7 +17,7 @@
         @include('_layout.error', ['message' => isset($message) ? $message :  session('message')])
         @endif
         
-        <table id="especies" class="centered striped responsive-table">
+        <table id="especies" class="striped responsive-table">
             <thead>
                 <tr>
                     <th>Nome</th>
