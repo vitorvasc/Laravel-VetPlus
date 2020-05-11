@@ -38,11 +38,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    protected $with = [
-        'permissoes',
-    ];
-
+    
     public function isAdmin()
     {
         return $this->hasOne(\App\Models\Permissao::class, 'usuario_id', 'id')->where(function ($query) {

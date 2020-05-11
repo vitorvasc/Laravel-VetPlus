@@ -14,10 +14,6 @@ class Raca extends Model
         'nome', 'especie_id',
     ];
 
-    protected $with = [
-        'especie'
-    ];
-
     public function especie()
     {
         return $this->belongsTo(\App\Models\Especie::class, 'especie_id');
