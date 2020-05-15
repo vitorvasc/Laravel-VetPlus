@@ -142,9 +142,14 @@
                 $('select.raca').empty().append('<option value="" disabled selected>Escolha</option>');
 
                 $.each(res, function(val, raca) {
-                    $('select.raca').append(new Option(raca.nome, raca.id));
-                    $('select.raca').prop('disabled', false);
+                    if({{session('data')['raca']}} == raca.id) {
+                        $('select.raca').append('<option value="'+ raca.id +'" selected>'+ raca.nome +'</option>');
+                    } else {
+                        $('select.raca').append('<option value="'+ raca.id +'">'+ raca.nome +'</option>');
+                    }
+
                     $('select.raca').formSelect();
+                    $('select.raca').prop('disabled', false);
                 });
             }
         });

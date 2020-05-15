@@ -98,12 +98,12 @@
                         <label for="whatsapp">É WhatsApp?</label>
                         <label>
                             <input class="with-gap" id="whatsapp" name="whatsapp" type="radio" value="1"
-                            @if(session('data')['whatsapp'] == 1) checked @endif> />
+                            @if(isset(session('data')['whatsapp']) && session('data')['whatsapp'] == 1) checked @endif/>
                             <span>Sim</span>
                         </label>
                         <label>
                             <input class="with-gap" id="whatsapp" name="whatsapp" type="radio" value="0" 
-                            @if(session('data')['whatsapp'] == 0) checked @endif> />
+                            @if(isset(session('data')['whatsapp']) && session('data')['whatsapp'] == 0) checked @endif/>
                             <span>Não</span>
                         </label>
                     </p>

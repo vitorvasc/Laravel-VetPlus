@@ -60,4 +60,45 @@ class PacientesController extends Controller
             return redirect()->route('site.pacientes')->with(['message' => $message]);
         }
     }
+
+    public function edit($id) {
+        $paciente = Paciente::where('id', $id)->first();
+        $especies = Especie::orderBy('id', 'asc')->get();
+        $clientes = Cliente::orderBy('id', 'asc')->get();
+
+        return view('pacientes.edit', ['paciente' => $paciente, 'especies' => $especies, 'clientes' => $clientes]);
+    }
+
+    public function editValidate($id, Request $req) {
+        $data = $req->all();
+        $paciente = Paciente::where('id', $id)->first();
+        $cliente_cpf = explode(' | ', $data['proprietario'])[0];
+
+        $cliente = Cliente::where('cpf', $cliente_cpf)->first();
+
+        if (!$cliente) {
+            $message = [
+                'type' => 'error',
+                'text' => 'Não foi possível encontrar este cliente cadastrado na base de dados.'
+            ];
+
+            return redirect()->route('site.pacientes.edit', $id)->with(['message' => $message, 'data' => $data]);
+        } else {
+            $paciente->nome = $data['nome'];
+            $paciente->raca_id = $data['raca'];
+            $paciente->cliente_id = $cliente->id;
+            $paciente->sexo = $data['sexo'];
+            $paciente->cor = $data['cor'];
+            $paciente->porte = $data['porte'];
+
+            $paciente->save();
+
+            $message = [
+                'type' => 'success',
+                'text' => 'Paciente alterado com sucesso!'
+            ];
+
+            return redirect()->route('site.pacientes')->with(['message' => $message]);
+        }
+    }
 }
