@@ -57,14 +57,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pacientes/{id}', ['as' => 'site.pacientes.view', 'uses' => 'Pacientes\PacientesController@view']);
     Route::get('/pacientes/editar/{id}', ['as' => 'site.pacientes.edit', 'uses' => 'Pacientes\PacientesController@edit']);
     Route::post('/pacientes/editar/{id}', ['as' => 'site.pacientes.edit.validate', 'uses' => 'Pacientes\PacientesController@editValidate']);
-
-    Route::get('/consultas', ['as' => 'site.consultas', 'uses' => 'Consultas\ConsultasController@index']);
-    Route::get('/pacientes/criar', ['as' => 'site.consultas.create', 'uses' => 'Consultas\ConsultasController@create']);
-    Route::post('/consultas/criar', ['as' => 'site.consultas.insert', 'uses' => 'Consultas\ConsultasController@insert']);
-    Route::get('/consultas/{id}', ['as' => 'site.consultas.view', 'uses' => 'Consultas\ConsultasController@view']);
-    Route::get('/consultas/editar/{id}', ['as' => 'site.consultas.edit', 'uses' => 'Consultas\ConsultasController@edit']);
-    Route::post('/consultas/editar/{id}', ['as' => 'site.consultas.edit.validate', 'uses' => 'Consultas\ConsultasController@editValidate']);
-
-    //FIXME: rotas de post nao podem retornar view
-
 });
