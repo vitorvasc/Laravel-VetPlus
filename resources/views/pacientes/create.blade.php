@@ -19,6 +19,11 @@
                 <h5>Cadastrar novo paciente</h5>
             </div>
 
+            <div class="col s12 button">
+                <a href="{{route('site.usuarios')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
+                        class="material-icons left tiny">arrow_back</i>voltar</a>
+            </div>
+
             <div class="row">
                 <h6>Informações</h6>
 

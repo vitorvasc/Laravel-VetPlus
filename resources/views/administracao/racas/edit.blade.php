@@ -19,6 +19,11 @@
                 <h5>Alterar uma raça</h5>
             </div>
 
+            <div class="col s12 button">
+                <a href="{{route('site.racas')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
+                        class="material-icons left tiny">arrow_back</i>voltar</a>
+            </div>
+
             <div class="input-field col s12">
                 <select name="especie" id="especie" required>
                     <option value="" disabled selected>Escolha</option>

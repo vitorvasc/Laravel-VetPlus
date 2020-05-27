@@ -55,7 +55,7 @@
 
                     @if (@Auth::user()->isAdmin())
                     <li>
-                        <a class="dropdown-trigger" href="#!" data-target="dropdown-admin">Administração<i
+                        <a class="dropdown-trigger dd-administracao" href="#!" data-target="dropdown-admin">Administração<i
                                 class="material-icons right">arrow_drop_down</i></a>
                     </li>
                     @endif

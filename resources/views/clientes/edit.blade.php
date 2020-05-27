@@ -13,6 +13,11 @@
         <h5>Alterar cliente: {{$cliente->nome_completo}}</h5>
     </div>
 
+    <div class="col s12 button">
+        <a href="{{route('site.clientes')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
+                class="material-icons left tiny">arrow_back</i>voltar</a>
+    </div>
+
     <div class="col s12" style="margin: 15px 0 30px;">
         <ul class="tabs">
             <li class="tab col s3"><a class="active" href="#info">Dados pessoais</a></li>

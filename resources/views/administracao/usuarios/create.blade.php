@@ -16,6 +16,11 @@
             <h5>Adicionar novo usuário</h5>
         </div>
 
+        <div class="col s12 button">
+            <a href="{{route('site.usuarios')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
+                    class="material-icons left tiny">arrow_back</i>voltar</a>
+        </div>
+
         <div class="row">
             <div class="input-field col s6">
                 <input id="nome" name="nome" type="text" required class="validate" maxlength="64" @if(session('data'))

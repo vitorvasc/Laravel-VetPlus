@@ -18,6 +18,11 @@
                 <h5>Adicionar nova espécie</h5>
             </div>
 
+            <div class="col s12 button">
+                <a href="{{route('site.especies')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
+                        class="material-icons left tiny">arrow_back</i>voltar</a>
+            </div>
+
             <div class="input-field col s12">
                 <input id="nome" name="nome" type="text" required class="validate" maxlength="64" @if(session('data'))
                     value="{{session('data')['nome']}}" @endif>
