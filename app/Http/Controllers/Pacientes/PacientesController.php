@@ -18,6 +18,12 @@ class PacientesController extends Controller
         return view('pacientes.index', ['pacientes' => $pacientes]);
     }
 
+    public function view($id) {
+        $paciente = Paciente::where('id', $id)->first();
+
+        return view('pacientes.view', ['paciente' => $paciente]);
+    }
+
     public function create()
     {
         $especies = Especie::orderBy('id', 'asc')->get();

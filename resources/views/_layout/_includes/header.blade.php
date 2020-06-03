@@ -41,10 +41,6 @@
                 <a href="{{route('site.login')}}" class="brand-logo">{{@env('APP_NAME')}} </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li @if(Route::current()->getName() == 'site.home') class="active" @endif>
-                        <a href="{{route('site.home')}}">Início</a>
-                    </li>
-
                     <li @if(Route::current()->getName() == 'site.clientes') class="active" @endif>
                         <a href="{{route('site.clientes')}}">Clientes</a>
                     </li>
@@ -69,11 +65,6 @@
 
         <ul class="sidenav" id="mobile-demo">
             <div class="divider"></div>
-
-            <li @if(Route::current()->getName() == 'site.login') class="active" @endif>
-                <a href="{{route('site.login')}}">Início</a>
-            </li>
-
             <li @if(Route::current()->getName() == 'site.clientes') class="active" @endif>
                 <a href="{{route('site.clientes')}}">Clientes</a>
             </li>

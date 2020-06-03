@@ -57,4 +57,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pacientes/{id}', ['as' => 'site.pacientes.view', 'uses' => 'Pacientes\PacientesController@view']);
     Route::get('/pacientes/editar/{id}', ['as' => 'site.pacientes.edit', 'uses' => 'Pacientes\PacientesController@edit']);
     Route::post('/pacientes/editar/{id}', ['as' => 'site.pacientes.edit.validate', 'uses' => 'Pacientes\PacientesController@editValidate']);
+
+    Route::get('/consultas/create/{id}', ['as' => 'site.consultas.create', 'uses' => 'Consultas\ConsultasController@create']);
+    Route::post('/consultas/create/{id}', ['as' => 'site.consultas.insert', 'uses' => 'Consultas\ConsultasController@insert']);
+    Route::get('/consultas/view/{id}', ['as' => 'site.consultas.view', 'uses' => 'Consultas\ConsultasController@view']);
 });

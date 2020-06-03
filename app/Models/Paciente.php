@@ -28,4 +28,8 @@ class Paciente extends Model
     public function cliente() {
         return $this->belongsTo(\App\Models\Cliente\Cliente::class, 'cliente_id');
     }
+
+    public function consultas() {
+        return $this->hasMany(\App\Models\Consulta::class, 'paciente_id', 'id');
+    }
 }

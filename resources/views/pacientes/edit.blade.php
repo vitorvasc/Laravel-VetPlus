@@ -21,7 +21,7 @@
             </div>
 
             <div class="col s12 button">
-                <a href="{{route('site.usuarios')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
+                <a href="{{route('site.pacientes')}}" class="btn-small waves-effect waves-blue light-blue darken-4"><i
                         class="material-icons left tiny">arrow_back</i>voltar</a>
             </div>
 
