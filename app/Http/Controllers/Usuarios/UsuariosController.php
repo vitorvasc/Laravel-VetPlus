@@ -46,8 +46,6 @@ class UsuariosController extends Controller
                 'ativo' => 1
             ]);
 
-            //TODO: enviar email de cadastro
-
             return redirect()->route('site.usuarios.edit', $user->id)->with(['message' => $message]);
         }
     }

@@ -52,6 +52,7 @@ class ClientesController extends Controller
             $cliente = Cliente::create([
                 'nome_completo' => $data['nome'],
                 'cpf' => $data['cpf'],
+                'data_cadastro' => now(),
                 'rg' => isset($data['rg']) ? $data['rg'] : '',
                 'cadastrado_por' => Auth::user()->id,
             ]);
@@ -77,16 +78,6 @@ class ClientesController extends Controller
                 'telefone' => $data['telefone'],
                 'whatsapp' => (int) $data['whatsapp'],
             ]);
-
-            //TODO: email de cadastro de um cliente.
-            // $to_name = $data['nome'];
-            // $to_email = $data['email'];
-            // $data = array('name' => env('APP_NAME'), 'body' => 'Você foi cadastrado no sistema!');
-
-            // Mail::send('_layout.emails.emails', $data, function ($message) use ($to_name, $to_email) {
-            //     $message->to($to_email, $to_name)->subject('Você foi cadastrado no sistema.');
-            //     $message->from('contato@vitorvasconcellos.com.br', 'Test Mail');
-            // });
 
             return redirect()->route('site.clientes')->with(['message' => $message]);
         }
