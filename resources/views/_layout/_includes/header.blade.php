@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>{{@env('APP_NAME')}} - @yield('titulo')</title>
+    <title>{{env('APP_NAME')}} - @yield('titulo')</title>
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -38,7 +38,7 @@
         @endif
         <nav>
             <div class="nav-wrapper">
-                <a href="{{route('site.login')}}" class="brand-logo">{{@env('APP_NAME')}} </a>
+                <a href="{{route('site.login')}}" class="brand-logo">{{env('APP_NAME')}} </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li @if(Route::current()->getName() == 'site.clientes') class="active" @endif>
