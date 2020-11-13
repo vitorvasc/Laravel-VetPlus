@@ -7,7 +7,7 @@
 <div class="row login col s12 l6 push-l3">
     <div class="col s12 l6 push-l3">
         <div class="row box-title">
-            <h3>{{@env('APP_NAME')}}</h3>
+            <h3>{{env('APP_NAME')}}</h3>
         </div>
         @if (isset($message) || session('message'))
         @include('_layout.error', ['message' => isset($message) ? $message :  session('message')])
